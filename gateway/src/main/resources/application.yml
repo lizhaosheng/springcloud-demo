@@ -20,3 +20,15 @@ eureka:
     fetchRegistry: true
     serviceUrl:
       defaultZone: http://discovery:8761/eureka/
+    
+zuul:
+  ignoredServices: '*' # all services are ignored except those defined below.
+  routes:
+    hello:
+      path: /hello/**
+      serviceId: demo
+      stripPrefix: false  # default true   /hello/login  ->  /hello/login , if true /hello/login  ->  /login
+    remote-hello:
+      path: /remote-hello/**
+      url: http://localhost:9001
+      
