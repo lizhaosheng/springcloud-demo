@@ -16,3 +16,4 @@ spring:
       server:
         git:
           uri: https://github.com/lizhaosheng/springcloud-demo
+          searchPaths: config-repo
