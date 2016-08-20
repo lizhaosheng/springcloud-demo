@@ -15,5 +15,5 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/lizhaosheng/springcloud-demo
+          uri: https://github.com/lizhaosheng/springcloud-demo.git
           searchPaths: config-repo

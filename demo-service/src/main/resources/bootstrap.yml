@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: demo-service
+  cloud:
+    config:
+      uri: http://localhost:8888
+      name: jdbc
+      profile: test
+encrypt:
+  failOnError: false
