@@ -27,7 +27,7 @@ zuul:
     hello:
       path: /hello/**
       serviceId: demo
-      stripPrefix: false  # default true   /hello/login  ->  /hello/login , if true /hello/login  ->  /login
+      stripPrefix: false  # default true   /hello/login  ->  /login , if false /hello/login  ->  /hello/login
     remote-hello:
       path: /remote-hello/**
       url: http://localhost:9001
