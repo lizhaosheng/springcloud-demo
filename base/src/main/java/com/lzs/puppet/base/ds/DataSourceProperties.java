@@ -1,4 +1,4 @@
-package com.lzs.puppet.demo;
+package com.lzs.puppet.base.ds;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
