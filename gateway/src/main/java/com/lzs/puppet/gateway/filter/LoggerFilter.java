@@ -37,7 +37,11 @@ public class LoggerFilter implements Filter{
 	}
 
 	private void printRequest(HttpServletRequest req) {
-		logger.info("request uri("+req.getQueryString()+"):" + req.getRequestURI() + "?" + req.getQueryString());
+		if(req.getQueryString() != null){
+			logger.info("request uri("+req.getRemoteAddr()+"):" + req.getRequestURI() + "?" + req.getQueryString());
+		}else{
+			logger.info("request uri("+req.getRemoteAddr()+"):" + req.getRequestURI());
+		}
 	}
 
 	@Override

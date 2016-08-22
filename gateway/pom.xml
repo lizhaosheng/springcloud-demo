@@ -2,14 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>gateway</artifactId>
+    <artifactId>puppet-gateway</artifactId>
+    <name>puppet-gateway</name>
     <packaging>jar</packaging>
 
     <parent>
         <groupId>com.lzs.puppet</groupId>
-        <artifactId>parent</artifactId>
+        <artifactId>puppet-parent</artifactId>
         <version>0.1.0-SNAPSHOT</version>
     </parent>
 
@@ -32,6 +33,10 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zuul</artifactId>
         </dependency>
+        <dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-netflix-sidecar</artifactId>
