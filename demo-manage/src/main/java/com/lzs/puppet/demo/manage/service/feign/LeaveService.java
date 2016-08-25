@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.lzs.puppet.demo.manage.base.Constant;
-import com.lzs.puppet.model.CommonResponse;
-import com.lzs.puppet.model.leave.Leave;
+import com.lzs.puppet.demo.model.CommonResponse;
+import com.lzs.puppet.demo.model.leave.Leave;
 
 /**
  * ClassName:LeaveService <br/>

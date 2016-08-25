@@ -10,8 +10,8 @@
 
 package com.lzs.puppet.demo.manage.service;
 
-import com.lzs.puppet.model.exception.ServiceException;
-import com.lzs.puppet.model.manage.ManageUser;
+import com.lzs.puppet.demo.model.exception.ServiceException;
+import com.lzs.puppet.demo.model.manage.ManageUser;
 
 /**
  * ClassName:ManageUserService <br/>

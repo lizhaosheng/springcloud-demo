@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lzs.puppet.demo.manage.service.ManageUserService;
-import com.lzs.puppet.model.CommonResponse;
-import com.lzs.puppet.model.Constant;
-import com.lzs.puppet.model.manage.ManageUser;
+import com.lzs.puppet.demo.model.CommonResponse;
+import com.lzs.puppet.demo.model.Constant;
+import com.lzs.puppet.demo.model.manage.ManageUser;
 
 @RestController
 public class RegisterController {

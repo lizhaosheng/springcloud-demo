@@ -13,9 +13,9 @@ import org.springframework.web.client.RestTemplate;
 
 import com.lzs.puppet.demo.manage.base.Constant;
 import com.lzs.puppet.demo.manage.service.feign.LeaveService;
-import com.lzs.puppet.model.CommonResponse;
-import com.lzs.puppet.model.app.App;
-import com.lzs.puppet.model.leave.Leave;
+import com.lzs.puppet.demo.model.CommonResponse;
+import com.lzs.puppet.demo.model.app.App;
+import com.lzs.puppet.demo.model.leave.Leave;
 
 /**
  * 

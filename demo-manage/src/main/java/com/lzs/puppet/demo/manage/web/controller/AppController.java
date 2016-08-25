@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.lzs.puppet.demo.manage.base.Constant;
-import com.lzs.puppet.model.CommonResponse;
-import com.lzs.puppet.model.app.App;
+import com.lzs.puppet.demo.model.CommonResponse;
+import com.lzs.puppet.demo.model.app.App;
 
 /**
  * 

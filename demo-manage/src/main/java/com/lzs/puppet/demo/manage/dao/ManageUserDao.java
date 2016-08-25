@@ -10,7 +10,7 @@
 
 package com.lzs.puppet.demo.manage.dao;
 
-import com.lzs.puppet.model.manage.ManageUser;
+import com.lzs.puppet.demo.model.manage.ManageUser;
 
 /**
  * ClassName:ManageUserDao <br/>

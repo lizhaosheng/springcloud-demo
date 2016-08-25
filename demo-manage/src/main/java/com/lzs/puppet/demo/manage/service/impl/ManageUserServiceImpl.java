@@ -15,8 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.lzs.puppet.demo.manage.dao.ManageUserDao;
 import com.lzs.puppet.demo.manage.service.ManageUserService;
-import com.lzs.puppet.model.exception.ServiceException;
-import com.lzs.puppet.model.manage.ManageUser;
+import com.lzs.puppet.demo.model.exception.ServiceException;
+import com.lzs.puppet.demo.model.manage.ManageUser;
 
 /**
  * ClassName:ManageUserService <br/>
