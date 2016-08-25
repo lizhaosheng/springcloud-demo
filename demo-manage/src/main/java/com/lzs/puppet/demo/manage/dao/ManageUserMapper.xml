@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lzs.puppet.demo.manage.dao.ManageUserDao">
+	<!-- 查询用户 -->
+	<select id="getManageUserByName" resultType="com.lzs.puppet.model.manage.ManageUser">
+		SELECT
+			name,
+			password
+		FROM
+			demo_manage_user
+		where
+			name=#{name}
+	</select>
+	<insert id="addManageUser" parameterType="com.lzs.puppet.model.manage.ManageUser" useGeneratedKeys="true" keyProperty="id">
+		insert into demo_manage_user(
+			createTime,name,password)
+		values(
+			unix_timestamp(),#{name},#{password})
+	</insert>
+	
+	
+</mapper>

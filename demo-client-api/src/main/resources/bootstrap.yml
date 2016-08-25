@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: demo
+  cloud:
+    config:
+      discovery:
+        service-id: config
+encrypt:
+  failOnError: false
