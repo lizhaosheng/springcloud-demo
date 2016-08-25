@@ -10,17 +10,22 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>discovery</module>
-        <module>gateway</module>
-        <module>config</module>
-        <module>dashboard</module>
-        <module>consul</module>
+        <module>puppet-discovery</module>
+        <module>puppet-gateway</module>
+        <module>puppet-config</module>
+        <module>puppet-dashboard</module>
         
-        <module>common</module>
-        <module>model</module>
-        <module>base</module>
-        <module>demo-service</module>
-        <module>demo</module>
+        <module>demo-common</module>
+        <module>demo-model</module>
+        <module>demo-base</module>
+        <module>demo-im</module>
+        <module>demo-app</module>
+        <module>demo-company</module>
+        <module>demo-user</module>
+        <module>demo-leave</module>
+        <module>demo-client-api</module>
+        <module>demo-manage</module>
+        <module>demo-ops</module>
         
     </modules>
 
