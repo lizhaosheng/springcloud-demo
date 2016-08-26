@@ -19,7 +19,7 @@ package com.lzs.puppet.demo.model.exception;
  * @since JDK 1.6
  * @see
  */
-public class ServiceException extends Exception{
+public class ServiceException extends RuntimeException{
 
 	/**
 	 * serialVersionUID:TODO.

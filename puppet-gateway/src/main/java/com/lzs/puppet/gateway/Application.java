@@ -16,7 +16,7 @@ import org.springframework.cloud.netflix.sidecar.EnableSidecar;
  * @since JDK 1.6
  */
 @SpringBootApplication
-@EnableSidecar
+@EnableSidecar  // include @EnableZuulProxy
 public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);

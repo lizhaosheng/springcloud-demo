@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lzs.puppet.demo.company.dao.CompanyDao">
+	<!-- 查询用户 -->
+	<select id="queryCompany" parameterType="com.lzs.puppet.demo.model.company.Company" resultType="com.lzs.puppet.demo.model.company.Company">
+		SELECT
+			id,
+			createTime,
+			updateTime,
+			name,
+			remark
+		FROM
+			demo_company
+		<where>
+			<if test="name != null and name != ''">
+				and name = #{name}
+			</if>
+		</where>
+	</select>
+	<select id="getCompanyById" resultType="com.lzs.puppet.demo.model.company.Company">
+		SELECT
+			id,
+			createTime,
+			updateTime,
+			name,
+			remark
+		FROM
+			demo_company
+		where 
+			id = #{id}
+	</select>
+	
+	<insert id="addCompany" parameterType="com.lzs.puppet.demo.model.company.Company" useGeneratedKeys="true" keyProperty="id">
+		insert into demo_company(
+			createTime,
+			updateTime,
+			name,
+			remark)
+		values(
+			unix_timestamp(),
+			0,
+			#{name},
+			#{remark})
+	</insert>
+	
+	<update id="updateCompany" parameterType="com.lzs.puppet.demo.model.company.Company">
+		update 
+			demo_company
+		set
+		<if test="name != null and name != ''">
+			name = #{name},
+		</if>
+		<if test="remark != null and remark != ''">
+			remark = #{remark},
+		</if>
+			updateTime = unix_timestamp()
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteCompany">
+		delete from demo_company where id = #{id}
+	</delete>
+</mapper>

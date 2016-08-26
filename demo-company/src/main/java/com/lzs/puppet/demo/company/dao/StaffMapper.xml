@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lzs.puppet.demo.company.dao.StaffDao">
+	<!-- 查询用户 -->
+	<select id="queryStaff" parameterType="com.lzs.puppet.demo.model.company.Staff" resultType="com.lzs.puppet.demo.model.company.Staff">
+		SELECT
+			id,
+			createTime,
+			updateTime,
+			companyId
+			name,
+			jobnumber,
+			mobile,
+			remark
+		FROM
+			demo_staff
+		<where>
+			<if test="companyId > 0">
+				and companyId = #{companyId}
+			</if>
+			<if test="name != null and name != ''">
+				and name = #{name}
+			</if>
+			<if test="jobnumber != null and jobnumber != ''">
+				and jobnumber = #{jobnumber}
+			</if>
+			<if test="mobile != null and mobile != ''">
+				and mobile = #{mobile}
+			</if>
+		</where>
+	</select>
+	<select id="getStaffById" resultType="com.lzs.puppet.demo.model.company.Staff">
+		SELECT
+			id,
+			createTime,
+			updateTime,
+			companyId
+			name,
+			jobnumber,
+			mobile,
+			remark,
+			pwd
+		FROM
+			demo_staff
+		where 
+			id = #{id}
+	</select>
+	
+	<insert id="addStaff" parameterType="com.lzs.puppet.demo.model.company.Staff" useGeneratedKeys="true" keyProperty="id">
+		insert into demo_staff(
+			createTime,
+			updateTime,
+			companyId
+			name,
+			jobnumber,
+			mobile,
+			remark,
+			pwd)
+		values(
+			unix_timestamp(),
+			0,
+			#{companyId}
+			#{name},
+			#{jobnumber},
+			#{mobile,jdbcType=VARCHAR}
+			#{remark,jdbcType=VARCHAR},
+			#{pwd,jdbcType=VARCHAR})
+	</insert>
+	
+	<update id="updateStaff" parameterType="com.lzs.puppet.demo.model.company.Staff">
+		update 
+			demo_staff
+		set
+		<if test="companyId > 0">
+			companyId = #{companyId},
+		</if>
+		<if test="name != null and name != ''">
+			name = #{name},
+		</if>
+		<if test="jobnumber > 0">
+			jobnumber = #{jobnumber},
+		</if>
+		<if test="mobile > 0">
+			mobile = #{mobile},
+		</if>
+		<if test="remark != null and remark != ''">
+			remark = #{remark},
+		</if>
+			updateTime = unix_timestamp()
+		where id = #{id}
+	</update>
+	
+	<update id="updateStaffPwd">
+		update 
+			demo_staff
+		set
+			pwd = #{pwd},
+			updateTime = unix_timestamp()
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteStaff">
+		delete from demo_staff where id = #{id}
+	</delete>
+</mapper>

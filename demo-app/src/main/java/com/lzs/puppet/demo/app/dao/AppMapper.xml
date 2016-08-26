@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lzs.puppet.demo.app.dao.AppDao">
+	<!-- 查询用户 -->
+	<select id="queryApp" parameterType="com.lzs.puppet.demo.model.app.App" resultType="com.lzs.puppet.demo.model.app.App">
+		SELECT
+			id,
+			createTime,
+			updateTime,
+			identity，
+			type,
+			name,
+			logo,
+			remark
+		FROM
+			demo_app
+		<where>
+			<if test="identity != null and identity != ''">
+				and identity = #{identity}
+			</if>
+			<if test="type > 0">
+				and type = #{type}
+			</if>
+			<if test="name != null and name != ''">
+				and name = #{name}
+			</if>
+		</where>
+	</select>
+	<select id="getAppById" resultType="com.lzs.puppet.demo.model.app.App">
+		SELECT
+			id,
+			createTime,
+			updateTime,
+			identity，
+			type,
+			name,
+			logo,
+			remark
+		FROM
+			demo_app
+		where 
+			id = #{id}
+	</select>
+	
+	<insert id="addApp" parameterType="com.lzs.puppet.demo.model.app.App" useGeneratedKeys="true" keyProperty="id">
+		insert into demo_app(
+			createTime,
+			updateTime,
+			identity，
+			type,
+			name,
+			logo,
+			remark)
+		values(
+			unix_timestamp(),
+			0,
+			#{identity},
+			#{type}
+			#{name},
+			#{logo,jdbcType=VARCHAR},
+			#{remark,jdbcType=VARCHAR})
+	</insert>
+	
+	<update id="updateApp" parameterType="com.lzs.puppet.demo.model.app.App">
+		update 
+			demo_app
+		set
+		<if test="type > 0">
+			type = #{type},
+		</if>
+		<if test="name != null and name != ''">
+			name = #{name},
+		</if>
+		<if test="logo != null and logo != ''">
+			logo = #{logo},
+		</if>
+		<if test="remark != null and remark != ''">
+			remark = #{remark},
+		</if>
+			updateTime = unix_timestamp()
+		where id = #{id}
+	</update>
+	
+	<delete id="deleteApp">
+		delete from demo_app where id = #{id}
+	</delete>
+</mapper>

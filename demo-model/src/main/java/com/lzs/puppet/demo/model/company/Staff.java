@@ -1,28 +1,28 @@
 /**
- * Project Name:demo-model
- * File Name:App.java
- * Package Name:com.lzs.puppet.model.app
+ * Project Name: demo-model
+ * File Name: Staff.java
+ * Package Name: com.lzs.puppet.demo.model.company
  * Describe: TODO
- * Date:2016年8月25日下午7:25:36
+ * Date: 2016年8月26日下午3:38:48
  * Copyright (c) 2016, withfeelings@163.com All Rights Reserved.
  *
  */
 
-package com.lzs.puppet.demo.model.app;
+package com.lzs.puppet.demo.model.company;
 
 import java.io.Serializable;
 
 /**
- * ClassName:App <br/>
- * Function: 应用描述对象. <br/>
+ * ClassName: Staff <br/>
+ * Function: TODO ADD FUNCTION. <br/>
  * Reason: TODO ADD REASON. <br/>
- * Date: 2016年8月25日 下午7:25:36 <br/>
- * @author hzlizhaosheng
+ * Date: 2016年8月26日 下午3:38:48 <br/>
+ * @author: hzlizhaosheng
  * @version
  * @since JDK 1.6
  * @see
  */
-public class App implements Serializable{
+public class Staff implements Serializable{
 
 	/**
 	 * serialVersionUID:TODO.
@@ -39,29 +39,34 @@ public class App implements Serializable{
 	 */
 	private long createTime;
 	/**
-	 * 更新时间
+	 * 创建时间
 	 */
 	private long updateTime;
 	/**
-	 * 应用标示
+	 * 所属子公司id
 	 */
-	private String identity;
+	private long companyId;
 	/**
-	 * 应用类型
-	 */
-	private int type;
-	/**
-	 * 应用名
+	 * 员工姓名
 	 */
 	private String name;
 	/**
-	 * 应用图标
+	 * 员工工号
 	 */
-	private String logo;
+	private String jobnumber;
 	/**
-	 * 应用描述
+	 * 员工手机号
+	 */
+	private String mobile;
+	/**
+	 * 员工描述
 	 */
 	private String remark;
+	/**
+	 * 员工客户端登录密码
+	 */
+	private String pwd;
+	
 	
 	public long getId() {
 		return id;
@@ -81,17 +86,11 @@ public class App implements Serializable{
 	public void setUpdateTime(long updateTime) {
 		this.updateTime = updateTime;
 	}
-	public String getIdentity() {
-		return identity;
+	public long getCompanyId() {
+		return companyId;
 	}
-	public void setIdentity(String identity) {
-		this.identity = identity;
-	}
-	public int getType() {
-		return type;
-	}
-	public void setType(int type) {
-		this.type = type;
+	public void setCompanyId(long companyId) {
+		this.companyId = companyId;
 	}
 	public String getName() {
 		return name;
@@ -99,17 +98,29 @@ public class App implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getLogo() {
-		return logo;
+	public String getJobnumber() {
+		return jobnumber;
 	}
-	public void setLogo(String logo) {
-		this.logo = logo;
+	public void setJobnumber(String jobnumber) {
+		this.jobnumber = jobnumber;
+	}
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
 	}
 	public String getRemark() {
 		return remark;
 	}
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+	public String getPwd() {
+		return pwd;
+	}
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 	
 }
