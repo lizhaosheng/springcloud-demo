@@ -39,6 +39,10 @@ public class Leave implements Serializable{
 	 */
 	private long createTime;
 	/**
+	 * 更新时间
+	 */
+	private long updateTime;
+	/**
 	 * 请假开始时间
 	 */
 	private long startTime;
@@ -74,6 +78,12 @@ public class Leave implements Serializable{
 	}
 	public void setCreateTime(long createTime) {
 		this.createTime = createTime;
+	}
+	public long getUpdateTime() {
+		return updateTime;
+	}
+	public void setUpdateTime(long updateTime) {
+		this.updateTime = updateTime;
 	}
 	public long getStartTime() {
 		return startTime;

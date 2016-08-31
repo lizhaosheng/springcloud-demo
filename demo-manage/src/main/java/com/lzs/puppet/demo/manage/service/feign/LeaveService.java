@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.lzs.puppet.demo.manage.base.MyConstant;
+import com.lzs.puppet.demo.base.constant.Constant;
 import com.lzs.puppet.demo.model.CommonResponse;
 import com.lzs.puppet.demo.model.leave.Leave;
 
@@ -36,7 +36,7 @@ import com.lzs.puppet.demo.model.leave.Leave;
  * @see
  */
 // @FeignClient(url = "https://api.github.com")  url方式
-@FeignClient(MyConstant.SERVICE.DEMO_LEAVE)  // serviceid方式
+@FeignClient(Constant.SERVICE.DEMO_LEAVE)  // serviceid方式
 public interface LeaveService {
 
 	@RequestMapping(value = "/getList", method = RequestMethod.POST, consumes = "application/json")

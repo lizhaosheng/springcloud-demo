@@ -8,7 +8,7 @@
  *
  */
 
-package com.lzs.puppet.demo.manage.service.feign;
+package com.lzs.puppet.demo.leave.sesrvice.feign;
 
 import java.util.List;
 

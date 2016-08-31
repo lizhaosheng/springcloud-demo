@@ -1,14 +1,14 @@
 /**
- * Project Name: demo-app
- * File Name: AppController.java
- * Package Name: com.lzs.puppet.demo.app.web.controller
+ * Project Name: demo-leave
+ * File Name: LeaveController.java
+ * Package Name: com.lzs.puppet.demo.leave.web.controller
  * Describe: TODO
  * Date: 2016年8月26日下午12:32:23
  * Copyright (c) 2016, withfeelings@163.com All Rights Reserved.
  *
  */
 
-package com.lzs.puppet.demo.app.web.controller;
+package com.lzs.puppet.demo.leave.web.controller;
 
 import java.util.List;
 
@@ -18,13 +18,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lzs.puppet.demo.app.service.AppService;
 import com.lzs.puppet.demo.base.constant.Constant;
+import com.lzs.puppet.demo.leave.sesrvice.LeaveService;
 import com.lzs.puppet.demo.model.CommonResponse;
-import com.lzs.puppet.demo.model.app.App;
+import com.lzs.puppet.demo.model.leave.Leave;
 
 /**
- * ClassName: AppController <br/>
+ * ClassName: LeaveController <br/>
  * Function: 应用内部服务. <br/>
  * Reason: TODO ADD REASON. <br/>
  * Date: 2016年8月26日 下午12:32:23 <br/>
@@ -34,18 +34,18 @@ import com.lzs.puppet.demo.model.app.App;
  * @see
  */
 @RestController
-@RequestMapping(value = "/app")
-public class AppController {
+@RequestMapping(value = "/leave")
+public class LeaveController {
 	
 	@Autowired
-	private AppService appService;
+	private LeaveService leaveService;
 	
-	@RequestMapping(value = "/queryApp")
+	@RequestMapping(value = "/queryLeave")
 	@ResponseBody
-	public CommonResponse<List<App>> queryApp(App app) {
-		CommonResponse<List<App>> resp = new CommonResponse<List<App>>();
+	public CommonResponse<List<Leave>> queryLeave(Leave leave) {
+		CommonResponse<List<Leave>> resp = new CommonResponse<List<Leave>>();
 		try{
-			List<App> list = appService.queryApp(app);
+			List<Leave> list = leaveService.queryLeave(leave);
 			resp.setResult(list);
 			resp.setCode(Constant.RESPONSE_CODE_SUCCESS);
 			resp.setMsg("success");
@@ -57,13 +57,13 @@ public class AppController {
 		}
 	}
 	
-	@RequestMapping(value = "/getAppById")
+	@RequestMapping(value = "/getLeaveById")
 	@ResponseBody
-	public CommonResponse<App> getAppById(@RequestParam("id") long id) {
-		CommonResponse<App> resp = new CommonResponse<App>();
+	public CommonResponse<Leave> getLeaveById(@RequestParam("id") long id) {
+		CommonResponse<Leave> resp = new CommonResponse<Leave>();
 		try{
-			App app = appService.getAppById(id);
-			resp.setResult(app);
+			Leave leave = leaveService.getLeaveById(id);
+			resp.setResult(leave);
 			resp.setCode(Constant.RESPONSE_CODE_SUCCESS);
 			resp.setMsg("success");
 			return resp;
@@ -74,14 +74,14 @@ public class AppController {
 		}
 	}
 	
-	@RequestMapping(value = "/addApp")
+	@RequestMapping(value = "/addLeave")
 	@ResponseBody
-	public CommonResponse<App> addApp(App app) {
-		CommonResponse<App> resp = new CommonResponse<App>();
+	public CommonResponse<Leave> addLeave(Leave leave) {
+		CommonResponse<Leave> resp = new CommonResponse<Leave>();
 		try{
-			int num = appService.addApp(app);
+			int num = leaveService.addLeave(leave);
 			if(num > 0){
-				resp.setResult(app);
+				resp.setResult(leave);
 				resp.setCode(Constant.RESPONSE_CODE_SUCCESS);
 				resp.setMsg("success");
 				return resp;
@@ -98,15 +98,15 @@ public class AppController {
 		}
 	}
 	
-	@RequestMapping(value = "/updateApp")
+	@RequestMapping(value = "/updateLeave")
 	@ResponseBody
-	public CommonResponse<App> updateApp(App app) {
-		CommonResponse<App> resp = new CommonResponse<App>();
+	public CommonResponse<Leave> updateLeave(Leave leave) {
+		CommonResponse<Leave> resp = new CommonResponse<Leave>();
 		try{
-			int num = appService.updateApp(app);
+			int num = leaveService.updateLeave(leave);
 			if(num > 0){
-				app = appService.getAppById(app.getId());
-				resp.setResult(app);
+				leave = leaveService.getLeaveById(leave.getId());
+				resp.setResult(leave);
 				resp.setCode(Constant.RESPONSE_CODE_SUCCESS);
 				resp.setMsg("success");
 				return resp;
@@ -123,14 +123,14 @@ public class AppController {
 		}
 	}
 	
-	@RequestMapping(value = "/deleteApp")
+	@RequestMapping(value = "/deleteLeave")
 	@ResponseBody
-	public CommonResponse<App> deleteApp(@RequestParam("id") long id) {
-		CommonResponse<App> resp = new CommonResponse<App>();
+	public CommonResponse<Leave> deleteLeave(@RequestParam("id") long id) {
+		CommonResponse<Leave> resp = new CommonResponse<Leave>();
 		try{
-			App app = appService.getAppById(id);
-			appService.deleteApp(id);
-			resp.setResult(app);
+			Leave leave = leaveService.getLeaveById(id);
+			leaveService.deleteLeave(id);
+			resp.setResult(leave);
 			resp.setCode(Constant.RESPONSE_CODE_SUCCESS);
 			resp.setMsg("success");
 			return resp;

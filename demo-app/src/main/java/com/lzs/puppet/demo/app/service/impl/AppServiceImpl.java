@@ -14,11 +14,11 @@ import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.lzs.puppet.demo.app.dao.AppDao;
 import com.lzs.puppet.demo.app.service.AppService;
 import com.lzs.puppet.demo.model.app.App;
-import com.lzs.puppet.demo.model.company.Company;
 import com.lzs.puppet.demo.model.exception.ServiceException;
 
 /**
@@ -31,6 +31,7 @@ import com.lzs.puppet.demo.model.exception.ServiceException;
  * @since JDK 1.6
  * @see
  */
+@Service("appService")
 public class AppServiceImpl implements AppService{
 	
 	@Autowired

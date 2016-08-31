@@ -1,9 +1,9 @@
 server:
-  port: 9000
+  port: ${PORT:0}
 
 eureka:
   instance:
-    hostname: demo-client-im
+    hostname: demo-client-app
     preferIpAddress: true # default false, but strong recommend to set true
   client:
     serviceUrl:

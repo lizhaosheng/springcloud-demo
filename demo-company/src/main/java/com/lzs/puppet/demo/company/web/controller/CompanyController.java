@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lzs.puppet.demo.base.constant.Constant;
 import com.lzs.puppet.demo.company.service.CompanyService;
 import com.lzs.puppet.demo.model.CommonResponse;
-import com.lzs.puppet.demo.model.Constant;
 import com.lzs.puppet.demo.model.company.Company;
 
 /**

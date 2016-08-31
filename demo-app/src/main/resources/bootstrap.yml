@@ -1,6 +1,6 @@
 spring:
   application:
-    name: demo
+    name: demo-app
   cloud:
     config:
       discovery:

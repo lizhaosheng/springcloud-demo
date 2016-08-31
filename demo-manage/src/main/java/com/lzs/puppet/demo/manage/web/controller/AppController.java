@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.lzs.puppet.demo.manage.base.MyConstant;
+import com.lzs.puppet.demo.base.constant.Constant;
 import com.lzs.puppet.demo.model.CommonResponse;
 import com.lzs.puppet.demo.model.app.App;
 
@@ -46,7 +46,7 @@ public class AppController {
 	public CommonResponse<List<App>> queryApp(App app) {
 		Map<String,App> map = new HashMap<String,App>();
 		map.put("app", app);
-		return restTemplate.getForObject("http://" + MyConstant.SERVICE.DEMO_APP +"/queryApp", CommonResponse.class,map);
+		return restTemplate.getForObject("http://" + Constant.SERVICE.DEMO_APP +"/queryApp", CommonResponse.class,map);
 	}
 
 	/**
@@ -58,6 +58,6 @@ public class AppController {
 	@ResponseBody
 	@RequestMapping(value = "/getAppById")
 	public CommonResponse<App> getAppById(@RequestParam("id")long id) {
-		return restTemplate.getForObject("http://" + MyConstant.SERVICE.DEMO_APP +"/getAppById/" + id, CommonResponse.class);
+		return restTemplate.getForObject("http://" + Constant.SERVICE.DEMO_APP +"/getAppById/" + id, CommonResponse.class);
 	}
 }
