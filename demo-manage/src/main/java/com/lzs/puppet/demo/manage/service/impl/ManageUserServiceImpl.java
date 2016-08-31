@@ -12,6 +12,7 @@ package com.lzs.puppet.demo.manage.service.impl;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.lzs.puppet.demo.manage.dao.ManageUserDao;
 import com.lzs.puppet.demo.manage.service.ManageUserService;
@@ -28,6 +29,7 @@ import com.lzs.puppet.demo.model.manage.ManageUser;
  * @since JDK 1.6
  * @see
  */
+@Service("manageUserService")
 public class ManageUserServiceImpl implements ManageUserService{
 
 	@Autowired
@@ -47,7 +49,7 @@ public class ManageUserServiceImpl implements ManageUserService{
 	}
 
 	@Override
-	public ManageUser addManageUser(ManageUser user) throws ServiceException {
+	public int addManageUser(ManageUser user) throws ServiceException {
 		if(user == null || StringUtils.isBlank(user.getName()) || StringUtils.isBlank(user.getPassword())){
 			throw new ServiceException("参数有误");
 		}

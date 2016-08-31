@@ -1,9 +1,10 @@
 server:
-  port: 9000
+  port: ${PORT:0}
 
 eureka:
+  instance:
+    hostname: demo-leave
+    preferIpAddress: true # default false, but strong recommend to set true
   client:
     serviceUrl:
-      defaultZone: http://discovery:8761/eureka/
-  instance:
-    preferIpAddress: true
+      defaultZone: http://discovery:8761/eureka/ # ,http://discovery1:8761/eureka/,http://discovery2:8762/eureka/,http://discovery3:8763/eureka/

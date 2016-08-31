@@ -1,11 +1,9 @@
 spring:
   application:
-    name: demo-service
+    name: demo-company
   cloud:
     config:
       discovery:
         service-id: config
       name: jdbc
       profile: test
-encrypt:
-  failOnError: false

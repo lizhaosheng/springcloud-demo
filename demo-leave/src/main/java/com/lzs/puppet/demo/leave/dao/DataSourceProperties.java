@@ -1,4 +1,4 @@
-package com.lzs.puppet.demo.base.ds;
+package com.lzs.puppet.demo.leave.dao;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

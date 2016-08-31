@@ -4,6 +4,8 @@ spring:
   cloud:
     config:
       discovery:
-        service-id: config
-encrypt:
-  failOnError: false
+        enabled: true
+        serviceId: demo-app
+      name: jdbc
+      profile: test
+    

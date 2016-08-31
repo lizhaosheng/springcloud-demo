@@ -1,4 +1,4 @@
-package com.lzs.puppet.demo.base.ds;
+package com.lzs.puppet.demo.leave.dao;
 
 import javax.annotation.PreDestroy;
 import javax.sql.DataSource;
@@ -16,7 +16,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 @EnableConfigurationProperties(DataSourceProperties.class)
-@MapperScan("com.lzs.puppet.demo.**.dao") // 接口扫描位置
+@MapperScan("com.lzs.puppet.demo.*.dao") // 接口扫描位置
 public class MybatisDataSource {
 	@Autowired
 	private DataSourceProperties dataSourceProperties;
@@ -24,7 +24,7 @@ public class MybatisDataSource {
 	/**
 	 * mybaits mapper xml搜索路径
 	 */
-	private final static String mapperLocations="classpath:com/lzs/puppet/demo/**/dao/*.xml"; 
+	private final static String mapperLocations="classpath:com/lzs/puppet/demo/*/dao/*.xml"; 
 
 	private org.apache.tomcat.jdbc.pool.DataSource pool;
 	

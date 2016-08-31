@@ -23,17 +23,18 @@ public class RegisterController {
 	 */
 	@RequestMapping(value = "/register")
 	@ResponseBody
-	public CommonResponse<ManageUser> remoteHello(ManageUser user) {
+	public CommonResponse<ManageUser> register(ManageUser user) {
 		CommonResponse<ManageUser> resp = new CommonResponse<ManageUser>();
 		try{
-			user = manageUserService.addManageUser(user);
-			if(user == null){
+			int num = manageUserService.addManageUser(user);
+			if(num <= 0){
 				resp.setCode(Constant.RESPONSE_CODE_FAILED);
 				resp.setMsg("failed");
 				return resp;
 			}
 			resp.setCode(Constant.RESPONSE_CODE_SUCCESS);
 			resp.setMsg("success");
+			resp.setData(user);
 			return resp;
 		}catch (Exception e){
 			resp.setCode(Constant.RESPONSE_CODE_FAILED);

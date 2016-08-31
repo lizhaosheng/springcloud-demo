@@ -1,3 +1,6 @@
 spring:
   application:
     name: discovery
+  profiles:
+    active: discovery1 #default active profile  
+# spring.cloud.config.discovery.enabled: true    

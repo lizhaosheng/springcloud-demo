@@ -11,7 +11,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @author withf
  *
  */
-@SpringBootApplication(scanBasePackages={"com.lzs.puppet.base","com.lzs.puppet.demo"})
+@SpringBootApplication
 @EnableDiscoveryClient
 public class Application {
 

@@ -21,7 +21,6 @@
         <module>demo-im</module>
         <module>demo-app</module>
         <module>demo-company</module>
-        <module>demo-user</module>
         <module>demo-leave</module>
         <module>demo-client-api</module>
         <module>demo-manage</module>

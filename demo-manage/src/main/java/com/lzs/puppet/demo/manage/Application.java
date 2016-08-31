@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.lzs.puppet.demo.base.ribbon.DemoRibbonConfiguration;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages={"com.lzs.puppet.demo.manage","com.lzs.puppet.demo.base"})
 @EnableDiscoveryClient
 @RibbonClient(name = "demo-manage", configuration = DemoRibbonConfiguration.class)
 @EnableFeignClients

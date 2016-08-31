@@ -27,7 +27,7 @@ public interface ManageUserService {
 
 	void checkLogin(ManageUser user) throws ServiceException;
 
-	ManageUser addManageUser(ManageUser user) throws ServiceException;
+	int addManageUser(ManageUser user) throws ServiceException;
 
 }
 

@@ -26,7 +26,7 @@ public interface ManageUserDao {
 
 	ManageUser getManageUserByName(ManageUser user);
 
-	ManageUser addManageUser(ManageUser user);
+	int addManageUser(ManageUser user);
 }
 
 	

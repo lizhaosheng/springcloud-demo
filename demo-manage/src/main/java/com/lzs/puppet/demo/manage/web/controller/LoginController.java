@@ -33,7 +33,7 @@ public class LoginController {
 			return resp;
 		}catch (Exception e){
 			resp.setCode(Constant.RESPONSE_CODE_FAILED);
-			resp.setMsg("failed");
+			resp.setMsg(e.getMessage());
 			return resp;
 		}
 	}

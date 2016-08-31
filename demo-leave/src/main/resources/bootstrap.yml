@@ -1,9 +1,10 @@
 spring:
   application:
-    name: demo
+    name: demo-leave
   cloud:
     config:
       discovery:
-        service-id: config
-encrypt:
-  failOnError: false
+        enabled: true
+        serviceId: config
+      name: jdbc
+      profile: test

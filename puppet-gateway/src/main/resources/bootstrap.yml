@@ -5,5 +5,3 @@ spring:
     config:
       discovery:
         service-id: config
-encrypt:
-  failOnError: false

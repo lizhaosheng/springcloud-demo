@@ -3,7 +3,7 @@
 
 <mapper namespace="com.lzs.puppet.demo.manage.dao.ManageUserDao">
 	<!-- 查询用户 -->
-	<select id="getManageUserByName" resultType="com.lzs.puppet.model.manage.ManageUser">
+	<select id="getManageUserByName" resultType="com.lzs.puppet.demo.model.manage.ManageUser">
 		SELECT
 			name,
 			password
@@ -12,7 +12,7 @@
 		where
 			name=#{name}
 	</select>
-	<insert id="addManageUser" parameterType="com.lzs.puppet.model.manage.ManageUser" useGeneratedKeys="true" keyProperty="id">
+	<insert id="addManageUser" parameterType="com.lzs.puppet.demo.model.manage.ManageUser" useGeneratedKeys="true" keyProperty="id">
 		insert into demo_manage_user(
 			createTime,name,password)
 		values(
