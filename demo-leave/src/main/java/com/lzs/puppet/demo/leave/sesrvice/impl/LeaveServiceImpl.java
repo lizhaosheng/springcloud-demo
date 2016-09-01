@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 import com.lzs.puppet.demo.leave.dao.LeaveDao;
 import com.lzs.puppet.demo.leave.sesrvice.LeaveService;
 import com.lzs.puppet.demo.model.leave.Leave;
-import com.lzs.puppet.demo.model.exception.ServiceException;
+import com.lzs.puppet.demo.base.exception.ServiceException;
 
 /**
  * ClassName: LeaveServiceImpl <br/>

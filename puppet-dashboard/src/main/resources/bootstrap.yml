@@ -3,5 +3,6 @@ spring:
     name: dashboard
   cloud:
     config:
-      uri: ${vcap.services.${PREFIX:}config.credentials.uri:http://user:password@localhost:8888}
-      
+      discovery:
+        enabled: true
+        serviceId: config

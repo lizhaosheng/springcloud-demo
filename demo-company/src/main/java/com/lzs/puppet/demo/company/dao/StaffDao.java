@@ -32,6 +32,8 @@ public interface StaffDao {
 	
 	Staff getStaffById(@Param("id")long id);
 	
+	Staff getStaffByJobnumber(@Param("jobnumber")String jobnumber);
+	
 	int addStaff(Staff staff);
 
 	int updateStaff(Staff staff);
@@ -40,7 +42,7 @@ public interface StaffDao {
 	
 	int deleteStaff(@Param("id")long id);
 
-	int deleteByCompanyId(long id);
+	int deleteByCompanyId(@Param("companyId")long companyId);
 
 }
 

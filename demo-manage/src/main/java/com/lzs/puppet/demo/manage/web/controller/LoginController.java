@@ -24,7 +24,7 @@ public class LoginController {
 	@SuppressWarnings("rawtypes")
 	@RequestMapping(value = "/login")
 	@ResponseBody
-	public CommonResponse remoteHello(ManageUser user) {
+	public CommonResponse login(ManageUser user) {
 		CommonResponse resp = new CommonResponse();
 		try{
 			manageUserService.checkLogin(user);

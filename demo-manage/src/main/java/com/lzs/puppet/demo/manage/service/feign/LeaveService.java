@@ -39,11 +39,11 @@ import com.lzs.puppet.demo.model.leave.Leave;
 @FeignClient(Constant.SERVICE.DEMO_LEAVE)  // serviceid方式
 public interface LeaveService {
 
-	@RequestMapping(value = "/getList", method = RequestMethod.POST, consumes = "application/json")
-	CommonResponse<List<Leave>> getList(Leave leave);
+	@RequestMapping(value = "/queryLeave", method = RequestMethod.POST)
+	CommonResponse<List<Leave>> queryLeave(Leave leave);
 	
-	@RequestMapping(value = "/getDetail/{id}", method = RequestMethod.POST)
-	CommonResponse<List<Leave>> getDetail(@PathVariable("id")long id);
+	@RequestMapping(value = "/getLeaveById/{id}", method = RequestMethod.POST)
+	CommonResponse<List<Leave>> getLeaveById(@PathVariable("id")long id);
 }
 
 	

@@ -3,7 +3,7 @@ server:
 
 eureka:
   instance:
-    hostname: demo-client-app
+    hostname: demo-client-api
     preferIpAddress: true # default false, but strong recommend to set true
   client:
     serviceUrl:

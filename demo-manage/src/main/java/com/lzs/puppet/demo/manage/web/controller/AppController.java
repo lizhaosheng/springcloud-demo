@@ -14,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import com.lzs.puppet.demo.base.constant.Constant;
 import com.lzs.puppet.demo.model.CommonResponse;
 import com.lzs.puppet.demo.model.app.App;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 /**
  * 

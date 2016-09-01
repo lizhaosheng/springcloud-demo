@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 import com.lzs.puppet.demo.app.dao.AppDao;
 import com.lzs.puppet.demo.app.service.AppService;
 import com.lzs.puppet.demo.model.app.App;
-import com.lzs.puppet.demo.model.exception.ServiceException;
+import com.lzs.puppet.demo.base.exception.ServiceException;
 
 /**
  * ClassName: AppServiceImpl <br/>

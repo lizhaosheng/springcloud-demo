@@ -63,6 +63,8 @@ public class Constant {
 	public class SERVICE{
 		public static final String DEMO_APP = "demo-app";
 		public static final String DEMO_LEAVE = "demo-leave";
+		public static final String DEMO_COMPANY = "demo-company";
+		public static final String DEMO_IM = "demo-im";
 	}
 }
 

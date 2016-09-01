@@ -4,6 +4,7 @@ spring:
   cloud:
     config:
       discovery:
-        service-id: config
+        enabled: true
+        serviceId: config
       name: jdbc
       profile: test

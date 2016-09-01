@@ -13,6 +13,7 @@ package com.lzs.puppet.demo.leave.web.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -34,7 +35,6 @@ import com.lzs.puppet.demo.model.leave.Leave;
  * @see
  */
 @RestController
-@RequestMapping(value = "/leave")
 public class LeaveController {
 	
 	@Autowired
@@ -42,7 +42,7 @@ public class LeaveController {
 	
 	@RequestMapping(value = "/queryLeave")
 	@ResponseBody
-	public CommonResponse<List<Leave>> queryLeave(Leave leave) {
+	public CommonResponse<List<Leave>> queryLeave(@RequestBody Leave leave) {
 		CommonResponse<List<Leave>> resp = new CommonResponse<List<Leave>>();
 		try{
 			List<Leave> list = leaveService.queryLeave(leave);
@@ -76,7 +76,7 @@ public class LeaveController {
 	
 	@RequestMapping(value = "/addLeave")
 	@ResponseBody
-	public CommonResponse<Leave> addLeave(Leave leave) {
+	public CommonResponse<Leave> addLeave(@RequestBody Leave leave) {
 		CommonResponse<Leave> resp = new CommonResponse<Leave>();
 		try{
 			int num = leaveService.addLeave(leave);
@@ -100,7 +100,7 @@ public class LeaveController {
 	
 	@RequestMapping(value = "/updateLeave")
 	@ResponseBody
-	public CommonResponse<Leave> updateLeave(Leave leave) {
+	public CommonResponse<Leave> updateLeave(@RequestBody Leave leave) {
 		CommonResponse<Leave> resp = new CommonResponse<Leave>();
 		try{
 			int num = leaveService.updateLeave(leave);

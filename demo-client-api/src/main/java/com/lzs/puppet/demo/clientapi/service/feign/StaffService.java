@@ -8,7 +8,7 @@
  *
  */
 
-package com.lzs.puppet.demo.manage.service.feign;
+package com.lzs.puppet.demo.clientapi.service.feign;
 
 import java.util.List;
 

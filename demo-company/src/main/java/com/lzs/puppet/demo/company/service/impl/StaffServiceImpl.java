@@ -14,13 +14,14 @@ import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.lzs.puppet.demo.company.dao.CompanyDao;
 import com.lzs.puppet.demo.company.dao.StaffDao;
 import com.lzs.puppet.demo.company.service.StaffService;
 import com.lzs.puppet.demo.model.company.Company;
 import com.lzs.puppet.demo.model.company.Staff;
-import com.lzs.puppet.demo.model.exception.ServiceException;
+import com.lzs.puppet.demo.base.exception.ServiceException;
 
 /**
  * ClassName: StaffServiceImpl <br/>
@@ -32,6 +33,7 @@ import com.lzs.puppet.demo.model.exception.ServiceException;
  * @since JDK 1.6
  * @see
  */
+@Service("staffService")
 public class StaffServiceImpl implements StaffService{
 	
 	@Autowired
@@ -50,6 +52,11 @@ public class StaffServiceImpl implements StaffService{
 	}
 
 	@Override
+	public Staff getStaffByJobnumber(String jobnumber) {
+		return staffDao.getStaffByJobnumber(jobnumber);
+	}
+	
+	@Override
 	public int addStaff(Staff staff) {
 		checkAdd(staff);
 		return staffDao.addStaff(staff);
@@ -67,12 +74,12 @@ public class StaffServiceImpl implements StaffService{
 		}
 		Staff query = new Staff();
 		query.setJobnumber(staff.getJobnumber());
-		List<Staff> list = staffDao.queryStaff(query );
-		if(!list.isEmpty()){
+		Staff s = staffDao.getStaffByJobnumber(staff.getJobnumber());
+		if(s != null){
 			throw new ServiceException("已存在相同工号的员工");
 		}
 	}
-
+	
 	@Override
 	public int updateStaff(Staff staff) {
 		checkUpdate(staff);

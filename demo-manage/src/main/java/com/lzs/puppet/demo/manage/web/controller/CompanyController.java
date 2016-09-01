@@ -3,6 +3,7 @@ package com.lzs.puppet.demo.manage.web.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,9 +38,9 @@ public class CompanyController {
 		return companyService.queryCompany(company);
 	}
 	
-	@RequestMapping(value = "/getCompanyById")
+	@RequestMapping(value = "/getCompanyById/{id}")
 	@ResponseBody
-	public CommonResponse<Company> getCompanyById(@RequestParam("id") long id) {
+	public CommonResponse<Company> getCompanyById(@PathVariable("id") long id) {
 		return companyService.getCompanyById(id);
 	}
 	
@@ -49,16 +50,16 @@ public class CompanyController {
 		return companyService.addCompany(company);
 	}
 	
-	@RequestMapping(value = "/updateCompany")
+	@RequestMapping(value = "/updateCompany/{id}")
 	@ResponseBody
-	public CommonResponse<Company> updateCompany(Company company) {
-		return companyService.updateCompany(company);
+	public CommonResponse<Company> updateCompany(@PathVariable("id")long id, Company company) {
+		return companyService.updateCompany(id,company);
 		
 	}
 	
-	@RequestMapping(value = "/deleteCompany")
+	@RequestMapping(value = "/deleteCompany/{id}")
 	@ResponseBody
-	public CommonResponse<Company> deleteCompany(@RequestParam("id") long id) {
+	public CommonResponse<Company> deleteCompany(@PathVariable("id") long id) {
 		return companyService.deleteCompany(id);
 	}
 }

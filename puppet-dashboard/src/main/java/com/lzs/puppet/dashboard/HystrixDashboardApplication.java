@@ -1,26 +1,24 @@
 package com.lzs.puppet.dashboard;
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
+import org.springframework.cloud.netflix.turbine.EnableTurbine;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.lzs.puppet.dashboard.stream.MockStreamServlet;
 
 /**
  * Created by sgibb on 7/11/14.
  */
-@Configuration
-@ComponentScan
-@EnableAutoConfiguration
-@Controller
+@SpringBootApplication
 @EnableHystrixDashboard
+@EnableTurbine
+@RestController
 public class HystrixDashboardApplication extends SpringBootServletInitializer {
 	
 	@RequestMapping("/")

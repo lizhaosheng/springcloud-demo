@@ -65,7 +65,7 @@ public class Leave implements Serializable{
 	/**
 	 * 状态
 	 */
-	private long state;
+	private int state;
 	
 	public long getId() {
 		return id;
@@ -115,10 +115,10 @@ public class Leave implements Serializable{
 	public void setApprover(long approver) {
 		this.approver = approver;
 	}
-	public long getState() {
+	public int getState() {
 		return state;
 	}
-	public void setState(long state) {
+	public void setState(int state) {
 		this.state = state;
 	}
 	

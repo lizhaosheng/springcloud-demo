@@ -13,6 +13,7 @@ package com.lzs.puppet.demo.company.web.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -42,7 +43,7 @@ public class StaffController {
 	
 	@RequestMapping(value = "/queryStaff")
 	@ResponseBody
-	public CommonResponse<List<Staff>> queryStaff(Staff staff) {
+	public CommonResponse<List<Staff>> queryStaff(@RequestBody Staff staff) {
 		CommonResponse<List<Staff>> resp = new CommonResponse<List<Staff>>();
 		try{
 			List<Staff> list = staffService.queryStaff(staff);
@@ -76,7 +77,7 @@ public class StaffController {
 	
 	@RequestMapping(value = "/addStaff")
 	@ResponseBody
-	public CommonResponse<Staff> addStaff(Staff staff) {
+	public CommonResponse<Staff> addStaff(@RequestBody Staff staff) {
 		CommonResponse<Staff> resp = new CommonResponse<Staff>();
 		try{
 			int num = staffService.addStaff(staff);
@@ -100,7 +101,7 @@ public class StaffController {
 	
 	@RequestMapping(value = "/updateStaff")
 	@ResponseBody
-	public CommonResponse<Staff> updateStaff(Staff staff) {
+	public CommonResponse<Staff> updateStaff(@RequestBody Staff staff) {
 		CommonResponse<Staff> resp = new CommonResponse<Staff>();
 		try{
 			int num = staffService.updateStaff(staff);

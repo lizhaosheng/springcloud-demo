@@ -1,88 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.lzs.puppet.demo.app.dao.AppDao">
+<mapper namespace="com.lzs.puppet.demo.leave.dao.LeaveDao">
 	<!-- 查询用户 -->
-	<select id="queryApp" parameterType="com.lzs.puppet.demo.model.app.App" resultType="com.lzs.puppet.demo.model.app.App">
+	<select id="queryLeave" parameterType="com.lzs.puppet.demo.model.leave.Leave" resultType="com.lzs.puppet.demo.model.leave.Leave">
 		SELECT
 			id,
 			createTime,
 			updateTime,
-			identity，
-			type,
-			name,
-			logo,
-			remark
+			startTime
+			endTime,
+			reason,
+			staffId,
+			approver,
+			state
 		FROM
-			demo_app
+			demo_leave
 		<where>
-			<if test="identity != null and identity != ''">
-				and identity = #{identity}
+			<if test="staffId > 0">
+				and staffId = #{staffId}
 			</if>
-			<if test="type > 0">
-				and type = #{type}
+			<if test="approver > 0">
+				and approver = #{approver}
 			</if>
-			<if test="name != null and name != ''">
-				and name = #{name}
+			<if test="state > 0">
+				and state = #{state}
 			</if>
 		</where>
 	</select>
-	<select id="getAppById" resultType="com.lzs.puppet.demo.model.app.App">
+	<select id="getLeaveById" resultType="com.lzs.puppet.demo.model.leave.Leave">
 		SELECT
 			id,
 			createTime,
 			updateTime,
-			identity，
-			type,
-			name,
-			logo,
-			remark
+			startTime
+			endTime,
+			reason,
+			staffId,
+			approver,
+			state
 		FROM
-			demo_app
+			demo_leave
 		where 
 			id = #{id}
 	</select>
 	
-	<insert id="addApp" parameterType="com.lzs.puppet.demo.model.app.App" useGeneratedKeys="true" keyProperty="id">
-		insert into demo_app(
+	<insert id="addLeave" parameterType="com.lzs.puppet.demo.model.leave.Leave" useGeneratedKeys="true" keyProperty="id">
+		insert into demo_leave(
 			createTime,
 			updateTime,
-			identity，
-			type,
-			name,
-			logo,
-			remark)
+			startTime
+			endTime,
+			reason,
+			staffId,
+			approver,
+			state)
 		values(
 			unix_timestamp(),
 			0,
-			#{identity},
-			#{type}
-			#{name},
-			#{logo,jdbcType=VARCHAR},
-			#{remark,jdbcType=VARCHAR})
+			#{startTime}
+			#{endTime},
+			#{reason},
+			#{staffId}
+			#{approver},
+			#{state})
 	</insert>
 	
-	<update id="updateApp" parameterType="com.lzs.puppet.demo.model.app.App">
+	<update id="updateLeave" parameterType="com.lzs.puppet.demo.model.leave.Leave">
 		update 
-			demo_app
+			demo_leave
 		set
-		<if test="type > 0">
-			type = #{type},
+		<if test="reason != null and reason != ''">
+			reason = #{reason},
 		</if>
-		<if test="name != null and name != ''">
-			name = #{name},
-		</if>
-		<if test="logo != null and logo != ''">
-			logo = #{logo},
-		</if>
-		<if test="remark != null and remark != ''">
-			remark = #{remark},
+		<if test="state > 0">
+			state = #{state},
 		</if>
 			updateTime = unix_timestamp()
 		where id = #{id}
 	</update>
 	
-	<delete id="deleteApp">
-		delete from demo_app where id = #{id}
+	<delete id="deleteLeave">
+		delete from demo_leave where id = #{id}
 	</delete>
+	
 </mapper>

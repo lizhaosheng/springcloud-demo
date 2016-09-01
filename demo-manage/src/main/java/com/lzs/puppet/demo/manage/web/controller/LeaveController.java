@@ -3,6 +3,7 @@ package com.lzs.puppet.demo.manage.web.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,21 +25,21 @@ import com.lzs.puppet.demo.model.leave.Leave;
  * @since JDK 1.6
  */
 @RestController
-@RequestMapping(value="/leave")
+@RequestMapping(value = "/leave")
 public class LeaveController {
 
 	@Autowired
 	private LeaveService leaveService;
 
 	@ResponseBody
-	@RequestMapping(value = "/getList")
-	public CommonResponse<List<Leave>> getList(Leave leave) {
-		return leaveService.getList(leave);
+	@RequestMapping(value = "/queryLeave")
+	public CommonResponse<List<Leave>> queryList(Leave leave) {
+		return leaveService.queryLeave(leave);
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/getDetail")
-	public CommonResponse<List<Leave>> getDetail(@RequestParam("id")long id) {
-		return leaveService.getDetail(id);
+	@RequestMapping(value = "/getLeaveById/{id}")
+	public CommonResponse<List<Leave>> getLeaveById(@PathVariable("id")long id) {
+		return leaveService.getLeaveById(id);
 	}
 }

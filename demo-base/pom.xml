@@ -46,6 +46,12 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-feign</artifactId>
 		</dependency>
+		<!-- hystrix & Turbine -->
+		<dependency>
+		    <groupId>com.netflix.hystrix</groupId>
+		    <artifactId>hystrix-javanica</artifactId>
+		</dependency>
+
 		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-configuration-processor</artifactId> 
 			<optional>true</optional> </dependency> -->
 		<!-- 为了确保内嵌的servlet容器不能干扰war包将部署的servlet容器，需要将内置容器的依赖标记为provided 

@@ -29,6 +29,8 @@ public interface StaffService {
 	List<Staff> queryStaff(Staff Staff);
 	
 	Staff getStaffById(long id);
+
+	Staff getStaffByJobnumber(String jobnumber);
 	
 	int addStaff(Staff Staff);
 

@@ -15,6 +15,7 @@ endpoints:
 eureka:
   instance:
     hostname: gateway
+    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${server.port}
     preferIpAddress: true # default false, but strong recommend to set true
   client:
     registerWithEureka: true

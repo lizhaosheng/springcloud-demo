@@ -14,12 +14,13 @@ import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.lzs.puppet.demo.company.dao.CompanyDao;
 import com.lzs.puppet.demo.company.dao.StaffDao;
 import com.lzs.puppet.demo.company.service.CompanyService;
 import com.lzs.puppet.demo.model.company.Company;
-import com.lzs.puppet.demo.model.exception.ServiceException;
+import com.lzs.puppet.demo.base.exception.ServiceException;
 
 /**
  * ClassName: CompanyServiceImpl <br/>
@@ -31,6 +32,7 @@ import com.lzs.puppet.demo.model.exception.ServiceException;
  * @since JDK 1.6
  * @see
  */
+@Service("companyService")
 public class CompanyServiceImpl implements CompanyService{
 
 	@Autowired

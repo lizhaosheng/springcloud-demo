@@ -30,6 +30,11 @@ public class Staff implements Serializable{
 		
 	private static final long serialVersionUID = 1L;
 	
+	public static final int WORK_STATE_ONBOARD = 1;
+	public static final int WORK_STATE_LEAVE = 2;
+	public static final int STATE_OK = 1;
+	public static final int STATE_DELETE = 2;
+	
 	/**
 	 * 自增长id
 	 */
@@ -66,7 +71,14 @@ public class Staff implements Serializable{
 	 * 员工客户端登录密码
 	 */
 	private String pwd;
-	
+	/**
+	 * 在职状态，1在职，2离职
+	 */
+	private int workState;
+	/**
+	 * 状态，1正常，2已删除
+	 */
+	private int state;
 	
 	public long getId() {
 		return id;
@@ -121,6 +133,18 @@ public class Staff implements Serializable{
 	}
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
+	}
+	public int getWorkState() {
+		return workState;
+	}
+	public void setWorkState(int workState) {
+		this.workState = workState;
+	}
+	public int getState() {
+		return state;
+	}
+	public void setState(int state) {
+		this.state = state;
 	}
 	
 }

@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 
 import com.lzs.puppet.demo.manage.dao.ManageUserDao;
 import com.lzs.puppet.demo.manage.service.ManageUserService;
-import com.lzs.puppet.demo.model.exception.ServiceException;
+import com.lzs.puppet.demo.base.exception.ServiceException;
 import com.lzs.puppet.demo.model.manage.ManageUser;
 
 /**

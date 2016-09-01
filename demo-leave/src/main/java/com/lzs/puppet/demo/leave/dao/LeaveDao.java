@@ -38,8 +38,6 @@ public interface LeaveDao {
 	
 	int deleteLeave(@Param("id")long id);
 
-	int deleteByCompanyId(long id);
-
 }
 
 	

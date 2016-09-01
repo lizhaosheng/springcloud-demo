@@ -13,6 +13,8 @@ package com.lzs.puppet.demo.company.web.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -42,7 +44,7 @@ public class CompanyController {
 	
 	@RequestMapping(value = "/queryCompany")
 	@ResponseBody
-	public CommonResponse<List<Company>> queryCompany(Company company) {
+	public CommonResponse<List<Company>> queryCompany(@RequestBody Company company) {
 		CommonResponse<List<Company>> resp = new CommonResponse<List<Company>>();
 		try{
 			List<Company> list = companyService.queryCompany(company);
@@ -57,9 +59,9 @@ public class CompanyController {
 		}
 	}
 	
-	@RequestMapping(value = "/getCompanyById")
+	@RequestMapping(value = "/getCompanyById/{id}")
 	@ResponseBody
-	public CommonResponse<Company> getCompanyById(@RequestParam("id") long id) {
+	public CommonResponse<Company> getCompanyById(@PathVariable("id") long id) {
 		CommonResponse<Company> resp = new CommonResponse<Company>();
 		try{
 			Company company = companyService.getCompanyById(id);
@@ -76,7 +78,7 @@ public class CompanyController {
 	
 	@RequestMapping(value = "/addCompany")
 	@ResponseBody
-	public CommonResponse<Company> addCompany(Company company) {
+	public CommonResponse<Company> addCompany(@RequestBody Company company) {
 		CommonResponse<Company> resp = new CommonResponse<Company>();
 		try{
 			int num = companyService.addCompany(company);
@@ -98,9 +100,9 @@ public class CompanyController {
 		}
 	}
 	
-	@RequestMapping(value = "/updateCompany")
+	@RequestMapping(value = "/updateCompany{id}")
 	@ResponseBody
-	public CommonResponse<Company> updateCompany(Company company) {
+	public CommonResponse<Company> updateCompany(@PathVariable("id")long id, @RequestBody Company company) {
 		CommonResponse<Company> resp = new CommonResponse<Company>();
 		try{
 			int num = companyService.updateCompany(company);
@@ -123,9 +125,9 @@ public class CompanyController {
 		}
 	}
 	
-	@RequestMapping(value = "/deleteCompany")
+	@RequestMapping(value = "/deleteCompany/{id}")
 	@ResponseBody
-	public CommonResponse<Company> deleteCompany(@RequestParam("id") long id) {
+	public CommonResponse<Company> deleteCompany(@PathVariable("id") long id) {
 		CommonResponse<Company> resp = new CommonResponse<Company>();
 		try{
 			Company company = companyService.getCompanyById(id);

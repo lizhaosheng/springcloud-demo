@@ -8,7 +8,7 @@
  *
  */
 
-package com.lzs.puppet.demo.model.exception;
+package com.lzs.puppet.demo.base.exception;
 /**
  * ClassName:ServiceException <br/>
  * Function: TODO ADD FUNCTION. <br/>

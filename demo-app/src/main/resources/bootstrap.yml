@@ -5,7 +5,7 @@ spring:
     config:
       discovery:
         enabled: true
-        serviceId: demo-app
+        serviceId: config
       name: jdbc
       profile: test
       

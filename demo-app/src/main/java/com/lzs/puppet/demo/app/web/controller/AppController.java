@@ -13,6 +13,7 @@ package com.lzs.puppet.demo.app.web.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -34,7 +35,6 @@ import com.lzs.puppet.demo.model.app.App;
  * @see
  */
 @RestController
-@RequestMapping(value = "/app")
 public class AppController {
 	
 	@Autowired
@@ -57,9 +57,9 @@ public class AppController {
 		}
 	}
 	
-	@RequestMapping(value = "/getAppById")
+	@RequestMapping(value = "/getAppById/{id}")
 	@ResponseBody
-	public CommonResponse<App> getAppById(@RequestParam("id") long id) {
+	public CommonResponse<App> getAppById(@PathVariable("id") long id) {
 		CommonResponse<App> resp = new CommonResponse<App>();
 		try{
 			App app = appService.getAppById(id);

@@ -13,6 +13,7 @@ package com.lzs.puppet.demo.manage.service.feign;
 import java.util.List;
 
 import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -35,23 +36,23 @@ import com.lzs.puppet.demo.model.company.Company;
  * @see
  */
 //@FeignClient(url = "https://api.github.com")  url方式
-@FeignClient(Constant.SERVICE.DEMO_LEAVE)  // serviceid方式
+@FeignClient(Constant.SERVICE.DEMO_COMPANY)  // serviceid方式
 public interface CompanyService {
 
-	@RequestMapping(value = "/company/queryCompany", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/company/queryCompany", method = RequestMethod.POST)
 	CommonResponse<List<Company>> queryCompany(Company company);
 	
-	@RequestMapping(value = "/company/getCompanyById", method = RequestMethod.GET)
-	CommonResponse<Company> getCompanyById(long id);
+	@RequestMapping(value = "/company/getCompanyById/{id}", method = RequestMethod.GET)
+	CommonResponse<Company> getCompanyById(@PathVariable("id")long id);
 	
-	@RequestMapping(value = "/company/addCompany", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/company/addCompany", method = RequestMethod.POST)
 	CommonResponse<Company> addCompany(Company company);
 	
-	@RequestMapping(value = "/company/updateCompany", method = RequestMethod.POST, consumes = "application/json")
-	CommonResponse<Company> updateCompany(Company company);
+	@RequestMapping(value = "/company/updateCompany/{id}", method = RequestMethod.POST)
+	CommonResponse<Company> updateCompany(@PathVariable("id")long id, Company company);
 	
-	@RequestMapping(value = "/company/deleteCompany", method = RequestMethod.GET)
-	CommonResponse<Company> deleteCompany(long id);
+	@RequestMapping(value = "/company/deleteCompany/{id}", method = RequestMethod.GET)
+	CommonResponse<Company> deleteCompany(@PathVariable("id")long id);
 }
 
 	
