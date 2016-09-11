@@ -35,3 +35,12 @@ eureka:
   instance:
     #Virtual host name by which the clients identifies this service
     virtualHostName: ${spring.application.name}
+    
+#turbine: 
+  #appConfig: demo-manage # service need to be show in dashboard. like 'service1,service2,service3...'
+#  app-config-list:
+#    - demo-manage
+#    - demo-client-api
+  # how to get the cluster name. 'default' 默认取 spring.application.name 作为集群名，
+  # metadata['cluster'] 表示从eureka.instance.metadata-map.cluster 中获取集群名
+  # clusterNameExpression: 'default'

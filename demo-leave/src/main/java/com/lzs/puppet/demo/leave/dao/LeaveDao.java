@@ -31,12 +31,12 @@ public interface LeaveDao {
 	List<Leave> queryLeave(Leave leave);
 	
 	Leave getLeaveById(@Param("id")long id);
-	
+
+	Leave getLeaveByIdUid(@Param("id")long id, @Param("staffId")long uid);
+
 	int addLeave(Leave leave);
 
 	int updateLeave(Leave leave);
-	
-	int deleteLeave(@Param("id")long id);
 
 }
 

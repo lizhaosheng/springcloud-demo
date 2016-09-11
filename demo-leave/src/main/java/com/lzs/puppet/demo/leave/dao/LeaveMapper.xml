@@ -44,7 +44,22 @@
 		where 
 			id = #{id}
 	</select>
-	
+	<select id="getLeaveByIdUid" resultType="com.lzs.puppet.demo.model.leave.Leave">
+		SELECT
+			id,
+			createTime,
+			updateTime,
+			startTime
+			endTime,
+			reason,
+			staffId,
+			approver,
+			state
+		FROM
+			demo_leave
+		where 
+			id = #{id} and staffId=#{staffId}
+	</select>
 	<insert id="addLeave" parameterType="com.lzs.puppet.demo.model.leave.Leave" useGeneratedKeys="true" keyProperty="id">
 		insert into demo_leave(
 			createTime,
@@ -70,8 +85,17 @@
 		update 
 			demo_leave
 		set
+		<if test="startTime > 0">
+			startTime = #{startTime},
+		</if>
+		<if test="endTime > 0">
+			endTime = #{endTime},
+		</if>
 		<if test="reason != null and reason != ''">
 			reason = #{reason},
+		</if>
+		<if test="approver > 0">
+			approver = #{approver},
 		</if>
 		<if test="state > 0">
 			state = #{state},
@@ -79,9 +103,5 @@
 			updateTime = unix_timestamp()
 		where id = #{id}
 	</update>
-	
-	<delete id="deleteLeave">
-		delete from demo_leave where id = #{id}
-	</delete>
 	
 </mapper>

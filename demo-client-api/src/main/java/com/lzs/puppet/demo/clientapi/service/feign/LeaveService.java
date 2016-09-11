@@ -8,12 +8,11 @@
  *
  */
 
-package com.lzs.puppet.demo.manage.service.feign;
+package com.lzs.puppet.demo.clientapi.service.feign;
 
 import java.util.List;
 
 import org.springframework.cloud.netflix.feign.FeignClient;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -40,10 +39,22 @@ import com.lzs.puppet.demo.model.leave.Leave;
 public interface LeaveService {
 
 	@RequestMapping(value = "/queryLeave", method = RequestMethod.POST)
-	CommonResponse<List<Leave>> queryLeave(Leave leave);
+	CommonResponse<List<Leave>> queryMyLeave(Leave leave);
+
+	@RequestMapping(value = "/addLeave", method = RequestMethod.POST)
+	CommonResponse<Leave> addLeave(Leave leave);
 	
-	@RequestMapping(value = "/getLeaveById/{id}", method = RequestMethod.POST)
-	CommonResponse<Leave> getLeaveById(@PathVariable("id")long id);
+	@RequestMapping(value = "/getLeaveByIdUid", method = RequestMethod.POST)
+	CommonResponse<Leave> getLeaveByIdUid(long id, long uid);
+
+	@RequestMapping(value = "/updateMyLeave", method = RequestMethod.POST)
+	CommonResponse<Leave> updateMyLeave(Leave leave);
+
+	@RequestMapping(value = "/rollbackMyLeave", method = RequestMethod.POST)
+	CommonResponse<Leave> rollbackMyLeave(long uid, long id);
+
+	@RequestMapping(value = "/approval", method = RequestMethod.POST)
+	CommonResponse<Leave> approval(Leave leave);
 }
 
 	

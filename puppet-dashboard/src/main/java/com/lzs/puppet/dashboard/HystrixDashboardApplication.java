@@ -16,7 +16,6 @@ import com.lzs.puppet.dashboard.stream.MockStreamServlet;
  * Created by sgibb on 7/11/14.
  */
 @SpringBootApplication
-@EnableHystrixDashboard
 @EnableTurbine
 @RestController
 public class HystrixDashboardApplication extends SpringBootServletInitializer {

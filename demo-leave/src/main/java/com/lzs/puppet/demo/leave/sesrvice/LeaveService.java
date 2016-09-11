@@ -30,11 +30,15 @@ public interface LeaveService {
 	
 	Leave getLeaveById(long id);
 	
-	int addLeave(Leave Leave);
+	Leave addLeave(Leave Leave);
 
-	int updateLeave(Leave Leave);
-	
-	int deleteLeave(long id);
+	Leave getLeaveByIdUid(long id,long uid);
+
+	Leave updateMyLeave(Leave leave);
+
+	Leave rollbackMyLeave(long id, long uid);
+
+	Leave updateApproval(Leave leave);
 	
 }
 

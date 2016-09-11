@@ -63,7 +63,7 @@ public class Leave implements Serializable{
 	 */
 	private long approver;
 	/**
-	 * 状态
+	 * 状态,1等待审批，2审批通过，3审批未通过，4已撤销
 	 */
 	private int state;
 	

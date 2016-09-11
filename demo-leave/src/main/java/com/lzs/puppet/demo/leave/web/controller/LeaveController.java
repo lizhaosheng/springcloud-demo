@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lzs.puppet.demo.base.constant.Constant;
+import com.lzs.puppet.demo.base.exception.ServiceException;
 import com.lzs.puppet.demo.leave.sesrvice.LeaveService;
 import com.lzs.puppet.demo.model.CommonResponse;
 import com.lzs.puppet.demo.model.leave.Leave;
@@ -74,13 +75,30 @@ public class LeaveController {
 		}
 	}
 	
+	@RequestMapping(value = "/getLeaveByIdUid")
+	@ResponseBody
+	public CommonResponse<Leave> getLeaveById(@RequestParam("id") long id,@RequestParam("uid") long uid) {
+		CommonResponse<Leave> resp = new CommonResponse<Leave>();
+		try{
+			Leave leave = leaveService.getLeaveByIdUid(id,uid);
+			resp.setResult(leave);
+			resp.setCode(Constant.RESPONSE_CODE_SUCCESS);
+			resp.setMsg("success");
+			return resp;
+		}catch (Exception e){
+			resp.setCode(Constant.RESPONSE_CODE_FAILED);
+			resp.setMsg(e.getMessage());
+			return resp;
+		}
+	}
+	
 	@RequestMapping(value = "/addLeave")
 	@ResponseBody
 	public CommonResponse<Leave> addLeave(@RequestBody Leave leave) {
 		CommonResponse<Leave> resp = new CommonResponse<Leave>();
 		try{
-			int num = leaveService.addLeave(leave);
-			if(num > 0){
+			leave = leaveService.addLeave(leave);
+			if(leave != null){
 				resp.setResult(leave);
 				resp.setCode(Constant.RESPONSE_CODE_SUCCESS);
 				resp.setMsg("success");
@@ -98,48 +116,74 @@ public class LeaveController {
 		}
 	}
 	
-	@RequestMapping(value = "/updateLeave")
+	@RequestMapping(value = "/updateMyLeave")
 	@ResponseBody
-	public CommonResponse<Leave> updateLeave(@RequestBody Leave leave) {
+	public CommonResponse<Leave> updateMyLeave(@RequestBody Leave leave) {
 		CommonResponse<Leave> resp = new CommonResponse<Leave>();
 		try{
-			int num = leaveService.updateLeave(leave);
-			if(num > 0){
-				leave = leaveService.getLeaveById(leave.getId());
-				resp.setResult(leave);
-				resp.setCode(Constant.RESPONSE_CODE_SUCCESS);
-				resp.setMsg("success");
-				return resp;
-			}
-			else{
-				resp.setCode(Constant.RESPONSE_CODE_FAILED);
-				resp.setMsg("修改失败");
-				return resp;
-			}
-		}catch (Exception e){
-			resp.setCode(Constant.RESPONSE_CODE_FAILED);
-			resp.setMsg(e.getMessage());
-			return resp;
-		}
-	}
-	
-	@RequestMapping(value = "/deleteLeave")
-	@ResponseBody
-	public CommonResponse<Leave> deleteLeave(@RequestParam("id") long id) {
-		CommonResponse<Leave> resp = new CommonResponse<Leave>();
-		try{
-			Leave leave = leaveService.getLeaveById(id);
-			leaveService.deleteLeave(id);
+			leave = leaveService.updateMyLeave(leave);
 			resp.setResult(leave);
 			resp.setCode(Constant.RESPONSE_CODE_SUCCESS);
 			resp.setMsg("success");
 			return resp;
-		}catch (Exception e){
+		}catch (ServiceException e){
 			resp.setCode(Constant.RESPONSE_CODE_FAILED);
 			resp.setMsg(e.getMessage());
 			return resp;
 		}
+		catch (Exception e){
+			resp.setCode(Constant.RESPONSE_CODE_FAILED);
+			resp.setMsg("更新异常");
+			return resp;
+		}
 	}
+	
+
+	@RequestMapping(value = "/rollbackMyLeave")
+	@ResponseBody
+	public CommonResponse<Leave> rollbackMyLeave(@RequestParam("id") long id,@RequestParam("uid") long uid) {
+		CommonResponse<Leave> resp = new CommonResponse<Leave>();
+		try{
+			Leave leave = leaveService.rollbackMyLeave(id,uid);
+			resp.setResult(leave);
+			resp.setCode(Constant.RESPONSE_CODE_SUCCESS);
+			resp.setMsg("success");
+			return resp;
+		}catch (ServiceException e){
+			resp.setCode(Constant.RESPONSE_CODE_FAILED);
+			resp.setMsg(e.getMessage());
+			return resp;
+		}
+		catch (Exception e){
+			resp.setCode(Constant.RESPONSE_CODE_FAILED);
+			resp.setMsg("更新异常");
+			return resp;
+		}
+	}
+	
+
+	@RequestMapping(value = "/approval")
+	@ResponseBody
+	public CommonResponse<Leave> approval(@RequestBody Leave leave) {
+		CommonResponse<Leave> resp = new CommonResponse<Leave>();
+		try{
+			leave = leaveService.updateApproval(leave);
+			resp.setResult(leave);
+			resp.setCode(Constant.RESPONSE_CODE_SUCCESS);
+			resp.setMsg("success");
+			return resp;
+		}catch (ServiceException e){
+			resp.setCode(Constant.RESPONSE_CODE_FAILED);
+			resp.setMsg(e.getMessage());
+			return resp;
+		}
+		catch (Exception e){
+			resp.setCode(Constant.RESPONSE_CODE_FAILED);
+			resp.setMsg("更新异常");
+			return resp;
+		}
+	}
+	
 }
 
 	

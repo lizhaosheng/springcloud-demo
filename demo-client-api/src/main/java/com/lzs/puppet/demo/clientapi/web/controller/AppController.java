@@ -1,4 +1,4 @@
-package com.lzs.puppet.demo.manage.web.controller;
+package com.lzs.puppet.demo.clientapi.web.controller;
 
 import java.util.HashMap;
 import java.util.List;

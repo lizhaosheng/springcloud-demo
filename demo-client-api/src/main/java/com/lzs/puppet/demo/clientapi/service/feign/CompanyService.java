@@ -1,6 +1,6 @@
 /**
  * Project Name: demo-mange
- * File Name: StaffService.java
+ * File Name: CompanyService.java
  * Package Name: com.lzs.puppet.demo.manage.service.feign
  * Describe: TODO
  * Date: 2016年8月26日下午4:20:59
@@ -13,16 +13,16 @@ package com.lzs.puppet.demo.clientapi.service.feign;
 import java.util.List;
 
 import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.lzs.puppet.demo.base.constant.Constant;
 import com.lzs.puppet.demo.model.CommonResponse;
-import com.lzs.puppet.demo.model.company.Staff;
+import com.lzs.puppet.demo.model.company.Company;
 
 /**
- * ClassName: StaffService <br/>
+ * ClassName: CompanyService <br/>
  * Function: 
  * 格式 <br/>
 	@RequestMapping(method = RequestMethod.POST, value = "/stores/{storeId}", consumes = "application/json")
@@ -37,21 +37,22 @@ import com.lzs.puppet.demo.model.company.Staff;
  */
 //@FeignClient(url = "https://api.github.com")  url方式
 @FeignClient(Constant.SERVICE.DEMO_COMPANY)  // serviceid方式
-public interface StaffService {
+public interface CompanyService {
 
-//	@RequestMapping(value = "/staff/queryStaff", method = RequestMethod.POST, consumes = "application/json")
-	@RequestMapping(value = "/staff/queryStaff", method = RequestMethod.POST)
-	CommonResponse<List<Staff>> queryStaff(Staff staff);
+	@RequestMapping(value = "/company/queryCompany", method = RequestMethod.POST)
+	CommonResponse<List<Company>> queryCompany(Company company);
 	
-	@RequestMapping(value = "/staff/getStaffById", method = RequestMethod.GET)
-	CommonResponse<Staff> getStaffById(long id);
-
-	@RequestMapping(value = "/staff/updateStaff", method = RequestMethod.POST)
-	CommonResponse<Staff> updateStaff(Staff staff);
+	@RequestMapping(value = "/company/getCompanyById/{id}", method = RequestMethod.GET)
+	CommonResponse<Company> getCompanyById(@PathVariable("id")long id);
 	
-	@RequestMapping(value = "/staff/updateStaffPwd", method = RequestMethod.POST)
-	CommonResponse<Staff> updateStaffPwd(@RequestParam("id")long id,
-			@RequestParam("oldpwd")String oldpwd,@RequestParam("newpwd")String newpwd);
+	@RequestMapping(value = "/company/addCompany", method = RequestMethod.POST)
+	CommonResponse<Company> addCompany(Company company);
+	
+	@RequestMapping(value = "/company/updateCompany/{id}", method = RequestMethod.POST)
+	CommonResponse<Company> updateCompany(@PathVariable("id")long id, Company company);
+	
+	@RequestMapping(value = "/company/deleteCompany/{id}", method = RequestMethod.GET)
+	CommonResponse<Company> deleteCompany(@PathVariable("id")long id);
 }
 
 	

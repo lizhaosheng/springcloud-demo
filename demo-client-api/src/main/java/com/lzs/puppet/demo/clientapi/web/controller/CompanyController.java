@@ -1,4 +1,4 @@
-package com.lzs.puppet.demo.manage.web.controller;
+package com.lzs.puppet.demo.clientapi.web.controller;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lzs.puppet.demo.manage.service.feign.CompanyService;
+import com.lzs.puppet.demo.clientapi.service.feign.CompanyService;
 import com.lzs.puppet.demo.model.CommonResponse;
 import com.lzs.puppet.demo.model.company.Company;
 
@@ -41,24 +41,5 @@ public class CompanyController {
 	@ResponseBody
 	public CommonResponse<Company> getCompanyById(@PathVariable("id") long id) {
 		return companyService.getCompanyById(id);
-	}
-	
-	@RequestMapping(value = "/addCompany")
-	@ResponseBody
-	public CommonResponse<Company> addCompany(Company company) {
-		return companyService.addCompany(company);
-	}
-	
-	@RequestMapping(value = "/updateCompany/{id}")
-	@ResponseBody
-	public CommonResponse<Company> updateCompany(@PathVariable("id")long id, Company company) {
-		return companyService.updateCompany(id,company);
-		
-	}
-	
-	@RequestMapping(value = "/deleteCompany/{id}")
-	@ResponseBody
-	public CommonResponse<Company> deleteCompany(@PathVariable("id") long id) {
-		return companyService.deleteCompany(id);
 	}
 }
