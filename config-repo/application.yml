@@ -2,10 +2,11 @@
 # And they will work on all applications those get propeties from config server.
 spring:
   profiles: test
+# embed spring-redis combine with spring session, by default 
   redis:
     database: 0  # schema
     host: 127.0.0.1
-    password: ZZdfawt4e  # Login password of the redis server.
+    password: numenredis237  # Login password of the redis server.
     pool.max-active: 8
     pool.max-idle: 8
     pool.max-wait: -1
