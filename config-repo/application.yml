@@ -1,7 +1,24 @@
+# all properties in application.yml or application.properties will be regard as common propeties.
+# And they will work on all applications those get propeties from config server.
 spring:
   profiles: test
+  
 jdbc:
   driverClassName: com.mysql.jdbc.Driver
   url: jdbc:mysql://127.0.0.1:3306/test
   username: elftest
   password: elftest
+ 
+spring: 
+  redis:
+    database: 0  # schema
+    host: 127.0.0.1
+    password: ZZdfawt4e  # Login password of the redis server.
+    pool.max-active: 8
+    pool.max-idle: 8
+    pool.max-wait: -1
+    pool.min-idle: 0
+    port: 6379
+  # sentinel.master:  # Name of Redis server.
+  # sentinel.nodes:  # Comma-separated list of host:port pairs.
+    timeout: 10
