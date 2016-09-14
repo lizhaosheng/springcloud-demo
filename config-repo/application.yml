@@ -6,7 +6,7 @@ spring:
   redis:
     database: 0  # schema
     host: 127.0.0.1
-    password: numenredis237  # Login password of the redis server.
+    password: ZZdfawt4e  # Login password of the redis server.
     pool.max-active: 8
     pool.max-idle: 8
     pool.max-wait: -1
