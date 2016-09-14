@@ -2,11 +2,12 @@
 # And they will work on all applications those get propeties from config server.
 spring:
   profiles: test
+  
 # embed spring-redis combine with spring session, by default 
   redis:
     database: 0  # schema
     host: 127.0.0.1
-    password: ZZdfawt4e  # Login password of the redis server.
+    password: 12345678  # Login password of the redis server.
     pool.max-active: 8
     pool.max-idle: 8
     pool.max-wait: -1
@@ -15,8 +16,15 @@ spring:
   # sentinel.master:  # Name of Redis server.
   # sentinel.nodes:  # Comma-separated list of host:port pairs.
     timeout: 10
+    
+  # freemarker
+  freemarker:
+    template-loader-path: /
+    suffix: .ftl
+    
+    
 jdbc:
   driverClassName: com.mysql.jdbc.Driver
   url: jdbc:mysql://127.0.0.1:3306/test
-  username: elftest
-  password: elftest
+  username: test
+  password: test
