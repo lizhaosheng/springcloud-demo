@@ -17,10 +17,10 @@ spring:
   # sentinel.nodes:  # Comma-separated list of host:port pairs.
     timeout: 10
     
-  # freemarker
-  freemarker:
-    template-loader-path: /WEB-INF/view
-    suffix: .ftl
+#  # freemarker
+#  freemarker:
+#    template-loader-path: /WEB-INF/view
+#    suffix: .ftl
     
     
 jdbc:
