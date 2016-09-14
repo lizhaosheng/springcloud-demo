@@ -19,7 +19,7 @@ spring:
     
   # freemarker
   freemarker:
-    template-loader-path: /
+    template-loader-path: /WEB-INF/view
     suffix: .ftl
     
     
