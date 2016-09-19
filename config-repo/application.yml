@@ -2,13 +2,21 @@
 # And they will work on all applications those get propeties from config server.
 spring:
   profiles: test
-    
-#  # freemarker
-#  freemarker:
-#    template-loader-path: /WEB-INF/view
-#    suffix: .ftl
-    
-    
+  
+  redis:
+    database: 0  # schema
+    host: 127.0.0.1
+    port: 6379
+    password: ZZdfawt4e  # Login password of the redis server.
+    timeout: 10  
+    pool.max-active: 8
+    pool.max-idle: 8
+    pool.max-wait: -1
+    pool.min-idle: 0
+  # sentinel.master:  # Name of Redis server.
+  # sentinel.nodes:  # Comma-separated list of host:port pairs.  
+
+ 
 jdbc:
   driverClassName: com.mysql.jdbc.Driver
   url: jdbc:mysql://127.0.0.1:3306/test
@@ -16,16 +24,4 @@ jdbc:
   password: elftest
 
 
-redis:
-  database: 0  # schema
-  host: 127.0.0.1
-  port: 6379
-  password: ZZdfawt4e  # Login password of the redis server.
-  timeout: 10  
-  pool.max-active: 8
-  pool.max-idle: 8
-  pool.max-wait: -1
-  pool.min-idle: 0
-# sentinel.master:  # Name of Redis server.
-# sentinel.nodes:  # Comma-separated list of host:port pairs.
   
