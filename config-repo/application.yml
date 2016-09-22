@@ -9,16 +9,16 @@ jdbc:
   username: elftest
   password: elftest
 
-#redis:
-#  database: 0  # schema
-#  host: 127.0.0.2
-#  port: 6379
-#  password: ZZdfawt4e  # Login password of the redis server.
-#  timeout: 10  
-#  pool.max-active: 8
-#  pool.max-idle: 8
-#  pool.max-wait: -1
-#  pool.min-idle: 0
+redis:
+  database: 0  # schema
+  host: 127.0.0.2
+  port: 6379
+  password: ZZdfawt4e  # Login password of the redis server.
+  timeout: 10  
+  pool.max-active: 8
+  pool.max-idle: 8
+  pool.max-wait: -1
+  pool.min-idle: 0
 # sentinel.master:  # Name of Redis server.
 # sentinel.nodes:  # Comma-separated list of host:port pairs.  
 
