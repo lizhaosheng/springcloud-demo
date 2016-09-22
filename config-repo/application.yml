@@ -11,7 +11,7 @@ jdbc:
 
 redis:
   database: 0  # schema
-  host: 127.0.0.1
+  host: 127.0.0.2
   port: 6379
   password: ZZdfawt4e  # Login password of the redis server.
   timeout: 10  
@@ -21,7 +21,7 @@ redis:
   pool.min-idle: 0
 # sentinel.master:  # Name of Redis server.
 # sentinel.nodes:  # Comma-separated list of host:port pairs.  
-  
+
 freemarker:
   enabled: true
   template-loader-path: /WEB-INF/view  # also you can set like - classpath:/templates
