@@ -5,9 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.lzs.puppet.demo.base.constant.Constant;
@@ -17,7 +19,7 @@ import com.lzs.puppet.demo.model.app.App;
 import com.lzs.puppet.demo.model.company.Company;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
-@RestController
+@Controller
 @RequestMapping(value="/hello")
 public class HelloController {
 	
@@ -34,11 +36,12 @@ public class HelloController {
 	 * 
 	 * @return
 	 */
-	@ResponseBody
 	@RequestMapping(value = "")
-	public String home() {
-		return "Hello World!";
-	}
+	 public String hello(Model model, 
+			 @RequestParam(value="name", required=false, defaultValue="World") String name) {
+        model.addAttribute("name", name);
+        return "hello";
+    }
 	
 
 	/**

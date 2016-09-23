@@ -18,6 +18,11 @@
 	</properties>
 
 	<dependencies>
+		<!-- freemarker -->
+		<dependency>  
+		    <groupId>org.springframework.boot</groupId>  
+		    <artifactId>spring-boot-starter-freemarker</artifactId>  
+		</dependency>
 		<!-- 业务依赖 -->
 		<dependency>
 			<groupId>com.lzs.puppet</groupId>

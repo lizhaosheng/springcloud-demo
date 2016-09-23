@@ -22,7 +22,7 @@ redis:
 # sentinel.master:  # Name of Redis server.
 # sentinel.nodes:  # Comma-separated list of host:port pairs.  
 
-freemarker:
-  enabled: true
-  template-loader-path: /WEB-INF/view  # also you can set like - classpath:/templates
-  suffix: .ftl
+#freemarker:
+#  enabled: true
+#  template-loader-path: /WEB-INF/view  # also you can set like - classpath:/templates
+#  suffix: .ftl

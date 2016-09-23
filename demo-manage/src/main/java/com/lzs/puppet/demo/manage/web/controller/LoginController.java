@@ -34,7 +34,7 @@ public class LoginController {
 		CommonResponse resp = new CommonResponse();
 		try{
 			manageUserService.checkLogin(user);
-			sesison.setAttribute(Constant.LOGIN_USER, user);
+			sesison.setAttribute(Constant.MANAGE_LOGIN_USER, user);
 			resp.setCode(Constant.RESPONSE_CODE_SUCCESS);
 			resp.setMsg("success");
 			return resp;

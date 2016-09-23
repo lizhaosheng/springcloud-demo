@@ -70,7 +70,7 @@ public class LeaveController {
 	@ResponseBody
 	@RequestMapping(value = "/rollback/{id}")
 	public CommonResponse<Leave> rollback(@RequestHeader("uid")long uid, @PathVariable("id")long id) {
-		return leaveService.rollbackMyLeave(uid,id);
+		return leaveService.rollbackMyLeave(id,uid);
 	}
 	
 	@ResponseBody

@@ -26,7 +26,7 @@ public class Constant {
 	}
 	public static final int RESPONSE_CODE_SUCCESS = 200;
 	public static final int RESPONSE_CODE_FAILED = 400;
-	public static final String LOGIN_USER = "LOGIN_USER_";
+	public static final String MANAGE_LOGIN_USER = "MANAGE_LOGIN_USER_";
 //
 //	public static final URI REMOTE_HELLO_URL;
 //	public static final URI REMOTE_QUERY_USER;

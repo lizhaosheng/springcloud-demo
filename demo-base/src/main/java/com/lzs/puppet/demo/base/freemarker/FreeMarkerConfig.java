@@ -12,10 +12,10 @@ package com.lzs.puppet.demo.base.freemarker;
 
 import java.util.Properties;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.freemarker.FreeMarkerProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 /**
@@ -28,25 +28,25 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
  * @since JDK 1.6
  * @see
  */
-@ConfigurationProperties(prefix = "freemarker")
+//@Configuration
+//@ConfigurationProperties(prefix = "freemarker")
 public class FreeMarkerConfig extends FreeMarkerProperties{
-
-	@Bean
-	@ConditionalOnMissingBean(FreeMarkerConfig.class)
-	public FreeMarkerConfigurer freeMarkerConfigurer() {
-		FreeMarkerConfigurer configurer = new FreeMarkerConfigurer();
-		applyProperties(configurer);
-		return configurer;
-	}
-
-	private void applyProperties(FreeMarkerConfigurer factory) {
-		factory.setTemplateLoaderPaths(getTemplateLoaderPath());
-		factory.setPreferFileSystemAccess(isPreferFileSystemAccess());
-		factory.setDefaultEncoding(getCharsetName());
-		Properties settings = new Properties();
-		settings.putAll(getSettings());
-		factory.setFreemarkerSettings(settings);
-	}
+//
+//	@Bean
+//	public FreeMarkerConfigurer freeMarkerConfigurer() {
+//		FreeMarkerConfigurer configurer = new FreeMarkerConfigurer();
+//		applyProperties(configurer);
+//		return configurer;
+//	}
+//
+//	private void applyProperties(FreeMarkerConfigurer factory) {
+//		factory.setTemplateLoaderPaths(getTemplateLoaderPath());
+//		factory.setPreferFileSystemAccess(isPreferFileSystemAccess());
+//		factory.setDefaultEncoding(getCharsetName());
+//		Properties settings = new Properties();
+//		settings.putAll(getSettings());
+//		factory.setFreemarkerSettings(settings);
+//	}
 }
 
 	

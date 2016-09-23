@@ -6,5 +6,5 @@ spring:
       discovery:
         enabled: true
         serviceId: config
-      name: jdbc
+      name: company
       profile: test

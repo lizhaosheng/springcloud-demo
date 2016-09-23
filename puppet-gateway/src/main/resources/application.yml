@@ -24,6 +24,7 @@ eureka:
       defaultZone: http://discovery:8761/eureka/ #,http://discovery1:8761/eureka/,http://discovery2:8762/eureka/,http://discovery3:8763/eureka/
   
 zuul:
+  sensitiveHeaders: "*" # session can be transfered from gateway to applications 
   ignoredServices: '*' # all services are ignored except those defined below.
   routes:
     manage:

@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+
 @Component("defaultFilter")  
 public class DefaultFilter implements Filter{
 
@@ -42,6 +43,7 @@ public class DefaultFilter implements Filter{
 		}else{
 			logger.info("request uri("+req.getRemoteAddr()+"):" + req.getRequestURI());
 		}
+		logger.info("session_id:" + req.getSession().getId());
 	}
 
 	@Override

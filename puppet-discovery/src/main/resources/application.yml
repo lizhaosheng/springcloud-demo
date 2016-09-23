@@ -1,6 +1,60 @@
+spring: 
+  profiles: discovery1
+  
 server:
-  port: 8761
-
+  port: ${PORT:8761}
+  
+eureka:
+  instance:
+    hostname: discovery1
+    preferIpAddress: true # default false, but strong recommend to set true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://discovery2:8762/eureka/,http://discovery3:8763/eureka/
+      
+---
+spring:     
+  profiles: discovery2
+    
+server:
+  port: ${PORT:8762}
+  
+eureka:
+  instance:
+    hostname: discovery2
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true        
+    serviceUrl:
+      defaultZone: http://discovery1:8761/eureka/,http://discovery3:8763/eureka/
+      
+---
+spring:  
+  profiles: discovery3
+    
+server:
+  port: ${PORT:8763}
+  
+eureka:
+  instance:
+    hostname: discovery3
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true    
+    serviceUrl:
+      defaultZone: http://discovery1:8761/eureka/,http://discovery2:8762/eureka/
+      
+---
+spring: 
+  profiles: discovery
+  
+server:
+  port: ${PORT:8761}
+  
 eureka:
   instance:
     hostname: discovery
@@ -8,4 +62,4 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: http://discovery:${server.port}/eureka/
+      defaultZone: http://localhost:${server.port}/eureka/

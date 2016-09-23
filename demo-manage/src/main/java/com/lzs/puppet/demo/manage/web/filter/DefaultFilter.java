@@ -19,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import com.lzs.puppet.demo.base.constant.Constant;
+import com.lzs.puppet.demo.base.util.StringMatchHelper;
 import com.lzs.puppet.demo.model.manage.ManageUser;
 
 @Component("defaultFilter")  
@@ -28,9 +29,13 @@ public class DefaultFilter implements Filter{
 	
 	private static Set<String> nologinSet = new HashSet<String>();
 	static{
+		nologinSet.add("/hello");
 		nologinSet.add("/login");
 		nologinSet.add("/doLogin");
 	}
+	
+	private StringMatchHelper stringMatchHelper ;
+	
 	@Override
 	public void destroy() {
 		
@@ -53,12 +58,12 @@ public class DefaultFilter implements Filter{
 			endPath = endPath.substring(1);
 		}
 		
-		if(nologinSet.contains(endPath)){
+		if(stringMatchHelper.match(endPath)){
 			arg2.doFilter(arg0, arg1);
 			return;
 		}
 		try{
-			ManageUser user = (ManageUser) req.getSession().getAttribute(Constant.LOGIN_USER);
+			ManageUser user = (ManageUser) req.getSession().getAttribute(Constant.MANAGE_LOGIN_USER);
 			if(user == null){
 				boolean isAjaxRequest = isAjaxRequest(req);  
                 if (isAjaxRequest)  
@@ -70,6 +75,7 @@ public class DefaultFilter implements Filter{
                 res.sendRedirect("/login");  
                 return;  
 			}
+			logger.info("request user:" + user.getName());
 			arg2.doFilter(arg0, arg1);
 		}catch(Throwable t){
 			logger.error("Some thing terrible has happen.",t);
@@ -88,11 +94,12 @@ public class DefaultFilter implements Filter{
 		}else{
 			logger.info("request uri("+req.getRemoteAddr()+"):" + req.getRequestURI());
 		}
+		logger.info("session_id:" + req.getSession().getId());
 	}
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
-
+		stringMatchHelper = new StringMatchHelper(nologinSet);
 	}  
 	
 	/** 判断是否为Ajax请求  

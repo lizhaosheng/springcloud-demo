@@ -9,10 +9,14 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+
+import com.lzs.puppet.demo.base.constant.Constant;
+import com.lzs.puppet.demo.model.manage.ManageUser;
 
 @Component("defaultFilter")  
 public class DefaultFilter implements Filter{
@@ -42,6 +46,12 @@ public class DefaultFilter implements Filter{
 		}else{
 			logger.info("request uri("+req.getRemoteAddr()+"):" + req.getRequestURI());
 		}
+		logger.info("session_id:" + req.getSession().getId());
+//		HttpSession session = req.getSession();
+//		ManageUser user = (ManageUser) session.getAttribute(Constant.MANAGE_LOGIN_USER);
+//		if(user != null){
+//			logger.info("request user:" + user.getName());
+//		}
 	}
 
 	@Override
