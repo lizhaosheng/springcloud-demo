@@ -29,7 +29,7 @@ public class DefaultFilter implements Filter{
 	
 	private static Set<String> nologinSet = new HashSet<String>();
 	static{
-		nologinSet.add("/hello");
+		nologinSet.add("/hello/.*");
 		nologinSet.add("/login");
 		nologinSet.add("/doLogin");
 	}

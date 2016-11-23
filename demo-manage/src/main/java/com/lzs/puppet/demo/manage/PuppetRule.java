@@ -8,7 +8,9 @@
  *
  */
 
-package com.lzs.puppet.demo.base.ribbon;
+package com.lzs.puppet.demo.manage;
+
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 
 import com.netflix.loadbalancer.AvailabilityFilteringRule;
 import com.netflix.loadbalancer.ILoadBalancer;
@@ -26,9 +28,12 @@ import com.netflix.loadbalancer.Server;
  * @see
  */
 public class PuppetRule implements IRule{
+	
+	DiscoveryClient  discoveryClient ;
+	
 	private IRule rule = new AvailabilityFilteringRule();
 //	ILoadBalancer paramILoadBalancer;
-//	@Override
+	@Override
 	public Server choose(Object paramObject) {
 		System.out.println(paramObject);
 		return rule.choose(paramObject);

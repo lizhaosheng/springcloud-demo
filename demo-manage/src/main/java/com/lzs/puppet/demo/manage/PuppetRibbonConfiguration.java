@@ -8,14 +8,16 @@
  *
  */
 
-package com.lzs.puppet.demo.base.ribbon;
+package com.lzs.puppet.demo.manage;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import com.netflix.client.config.IClientConfig;
+import com.netflix.loadbalancer.ILoadBalancer;
 import com.netflix.loadbalancer.IPing;
 import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.PingUrl;
@@ -31,22 +33,28 @@ import com.netflix.loadbalancer.PingUrl;
  * @since JDK 1.6
  * @see
  */
-public class DemoRibbonConfiguration {
-	private Logger logger = LoggerFactory.getLogger(DemoRibbonConfiguration.class);
+@Configuration
+public class PuppetRibbonConfiguration {
+	private Logger logger = LoggerFactory.getLogger(PuppetRibbonConfiguration.class);
+//
+//	@Autowired
+//	IClientConfig ribbonClientConfig;
 	
-	@Autowired
-	IClientConfig ribbonClientConfig;
-
+	
 	@Bean
-	public IPing ribbonPing(IClientConfig config) {
+	public IPing ribbonPing() {
 		logger.info("create ribbon iping!");
 		return new PingUrl();
 	}
 
 	@Bean
-	public IRule ribbonRule(IClientConfig config) {
+	public IRule ribbonRule() {
 		logger.info("create ribbon irule!");
-//		return new AvailabilityFilteringRule();
 		return new PuppetRule();
+	}
+
+	@Bean
+	public ILoadBalancer ribbonILoadBalancer(){
+		return null;
 	}
 }

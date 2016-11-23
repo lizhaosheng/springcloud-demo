@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: ribbon-client
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        serviceId: config
+      name: manage
+      profile: test

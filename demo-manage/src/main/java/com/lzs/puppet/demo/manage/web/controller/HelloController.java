@@ -24,7 +24,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 public class HelloController {
 	
 	/**
-	 * ribbon 远程调用方式,开启@Bean @LoadBalanced后可直接注入使用
+	 * ribbon 远程调用方式,开启@Bean @LoadBalanced RestTemplate restTemplate()后可直接注入使用
 	 */
 	@Autowired
 	private RestTemplate restTemplate;

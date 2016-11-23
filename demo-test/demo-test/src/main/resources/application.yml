@@ -1,19 +1,19 @@
-server:
-  port: 8082
-#${PORT:0}
+server: 
+  port: 8888
 
 eureka:
-  instance:
-    hostname: demo-manage
+  instance: 
+    hostname: ribbon-client
     preferIpAddress: true # default false, but strong recommend to set true
     metadataMap:
       turbine-cluster: MAIN # 集群名，给turbine使用，表明当前hystrix信息是属于哪个集群的
   client:
     serviceUrl:
       defaultZone: http://discovery:8761/eureka/ # ,http://discovery1:8761/eureka/,http://discovery2:8762/eureka/,http://discovery3:8763/eureka/
-#      
-#spring:
-#  freemarker:
-#    template-loader-path:
-#      - /WEB-INF/view/
-#    suffix: .ftl
+        
+#say-hello:
+#  ribbon:
+#    eureka:
+#      enabled: false
+#    listOfServers: localhost:8090
+#    ServerListRefreshInterval: 15000

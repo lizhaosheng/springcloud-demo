@@ -32,7 +32,7 @@ public class DataSourceProperties {
 	}
 
 	public String getUrl() {
-		return url;
+		return "114.113.202.175";//url;
 	}
 
 	public void setUrl(String url) {
