@@ -14,6 +14,8 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.cloud.client.ServiceInstance;
+
 /**
  * ClassName: Route <br/>
  * Function: 路由配置项. 多个字段之间是且的关系，同一个字段多个值是或的关系<br/>
@@ -60,7 +62,6 @@ public class Route implements Serializable{
 	private List<String> targetTag;
 	/** 目标服务服务名，支持通配符*/
 	private Map<String,Object> targetMetaData;
-	
 	
 }
 

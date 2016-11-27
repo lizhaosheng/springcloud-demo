@@ -23,7 +23,7 @@
 		    <groupId>org.springframework.boot</groupId>  
 		    <artifactId>spring-boot-starter-freemarker</artifactId>  
 		</dependency>
-		<!-- 业务依赖 
+		<!-- 业务依赖
 		<dependency>
 			<groupId>com.lzs.puppet</groupId>
 			<artifactId>demo-model</artifactId>
@@ -34,7 +34,7 @@
 			<artifactId>demo-base</artifactId>
 			<version>0.1.0-SNAPSHOT</version>
 		</dependency>
-		-->
+		 -->
 		<!-- spring cloud -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

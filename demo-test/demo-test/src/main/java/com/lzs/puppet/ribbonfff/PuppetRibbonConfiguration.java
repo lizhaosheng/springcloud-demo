@@ -12,14 +12,11 @@ package com.lzs.puppet.ribbonfff;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.netflix.client.config.DefaultClientConfigImpl;
-import com.netflix.client.config.IClientConfig;
-import com.netflix.loadbalancer.ILoadBalancer;
+import com.netflix.loadbalancer.Server;
+import com.netflix.loadbalancer.ServerListFilter;
 
 /**
  * ClassName:DemoRibbonConfiguration <br/>
@@ -33,8 +30,8 @@ import com.netflix.loadbalancer.ILoadBalancer;
  * @see
  */
 @Configuration
-public class FooRibbonConfiguration {
-	private Logger logger = LoggerFactory.getLogger(FooRibbonConfiguration.class);
+public class PuppetRibbonConfiguration {
+	private Logger logger = LoggerFactory.getLogger(PuppetRibbonConfiguration.class);
 //
 //	@Autowired
 //	IClientConfig ribbonClientConfig;
@@ -51,22 +48,28 @@ public class FooRibbonConfiguration {
 //		return new PuppetRule();
 //	}
 //
-	@Bean
-	public ILoadBalancer ribbonILoadBalancer(IClientConfig config){
-		logger.info("create ribbon ribbonILoadBalancer!");
-		return new PuppetZoneAwareLoadBalancer(config);
-	}
+//	@Bean
+//	public ILoadBalancer ribbonILoadBalancer(IClientConfig config){
+//		logger.info("create ribbon ribbonILoadBalancer!");
+//		return new PuppetZoneAwareLoadBalancer();
+//	}
 //
 //	@Bean
 //	public ILoadBalancer ribbonILoadBalancer(){
 //		logger.info("create ribbon ribbonILoadBalancer!");
 //		return new PuppetZoneAwareLoadBalancer();
 //	}
-	
+//	
+//	@Bean
+//	public IClientConfig ribbonClientConfig() {
+//		DefaultClientConfigImpl config = new DefaultClientConfigImpl();
+//		config.loadProperties("say-hello");
+//		return config;
+//	}
 	@Bean
-	public IClientConfig ribbonClientConfig() {
-		DefaultClientConfigImpl config = new DefaultClientConfigImpl();
-		config.loadProperties("say-hello");
-		return config;
+	public ServerListFilter<Server> ribbonServerListFilter() {
+		PuppetServerListFilter filter = new PuppetServerListFilter();
+//		filter.initWithNiwsConfig(config);
+		return filter;
 	}
 }

@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.lzs.puppet.ribbonfff.HiRibbonConfiguration;
+import com.lzs.puppet.ribbonfff.PuppetRibbonConfiguration;
 
-@SpringBootApplication(scanBasePackages = { "com.lzs.puppet.ribbon.client" })
+@SpringBootApplication(scanBasePackages = { "com.lzs.puppet.ribbon.client","com.lzs.puppet.ribbonfff"})
 @EnableDiscoveryClient
 @RestController
-@RibbonClient(name = "ribbon-server", configuration = HiRibbonConfiguration.class)
+//@RibbonClient(name = "ribbon-server", configuration = PuppetRibbonConfiguration.class)
 // 下面的注解会自动配置freemarker，导致自定义的spring.freemarker 相关配置不生效
 // @EnableHystrixDashboard
 public class UserApplication {

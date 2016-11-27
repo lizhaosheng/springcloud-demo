@@ -8,10 +8,9 @@
  *
  */
 
-package com.lzs.puppet.ribbonfff;
+package com.lzs.puppet.route;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -26,8 +25,6 @@ import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.netflix.ribbon.ZonePreferenceServerListFilter;
 import org.springframework.data.redis.core.RedisTemplate;
 
-import com.lzs.puppet.ribbon.client.Constants;
-import com.lzs.puppet.ribbon.client.Route;
 import com.netflix.loadbalancer.Server;
 import com.netflix.loadbalancer.Server.MetaInfo;
 
@@ -75,20 +72,13 @@ public class PuppetServerListFilter extends ZonePreferenceServerListFilter {
 	 */
 	private Map<String,Set<String>> serviceInstanceIdMap = new HashMap<String,Set<String>>(0);
 	
-	public PuppetServerListFilter(){
-		List<Route> list = new ArrayList<Route>();
-		Route r = new Route();
-		list.add(r);
-		redisTemplate.opsForValue().set(Constants.PUPPUET_ROUTE, list);
-	}
-	
 	@Override
 	public List<Server> getFilteredListOfServers(List<Server> servers) {
 		if(!sync){// 没有其他线程在处理
 			sync = true;
 			try{
 				// 获取配置是否有变化标志（redis）
-				Long timestamp = (Long)redisTemplate.opsForValue().get(Constants.PUPPUET_ROUTE_TIMESTAMP);
+				Long timestamp = (Long) redisTemplate.opsForValue().get(Constants.PUPPUET_ROUTE_TIMESTAMP);
 				if(timestamp != null && localTimestamp < timestamp){
 					// 若有变化则更新本地配置
 					refreshLocalRoute(timestamp);
@@ -166,7 +156,6 @@ public class PuppetServerListFilter extends ZonePreferenceServerListFilter {
 				}
 			}
 		}
-		localTimestamp = timestamp;
 	}
 	
 	/**
@@ -199,9 +188,7 @@ public class PuppetServerListFilter extends ZonePreferenceServerListFilter {
 		// TODO Auto-generated method stub
 		return true;
 	}
-public static void main(String[] a){
-	System.out.println(new Date().getTime());
-}
+
 }
 
 	

@@ -8,18 +8,19 @@
  *
  */
 
-package com.lzs.puppet.ribbonfff;
+package com.lzs.puppet.route;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import com.netflix.loadbalancer.Server;
 import com.netflix.loadbalancer.ServerListFilter;
 
 /**
  * ClassName:DemoRibbonConfiguration <br/>
- * Function: TODO ADD FUNCTION. <br/>
+ * Function: 覆盖 org.springframework.cloud.netflix.ribbon.RibbonClientConfiguration 中的bean<br/>
  * Reason: TODO ADD REASON. <br/>
  * Date: 2016年8月23日 下午2:31:46 <br/>
  * 
@@ -28,9 +29,13 @@ import com.netflix.loadbalancer.ServerListFilter;
  * @since JDK 1.6
  * @see
  */
-public class HiRibbonConfiguration {
-	private Logger logger = LoggerFactory.getLogger(HiRibbonConfiguration.class);
+@Configuration
+public class PuppetRibbonConfiguration {
+	private Logger logger = LoggerFactory.getLogger(PuppetRibbonConfiguration.class);
 //
+//	@Autowired
+//	private RedisTemplate redisTemplate;
+//	
 //	@Autowired
 //	IClientConfig ribbonClientConfig;
 //	  
@@ -49,25 +54,24 @@ public class HiRibbonConfiguration {
 //	@Bean
 //	public ILoadBalancer ribbonILoadBalancer(IClientConfig config){
 //		logger.info("create ribbon ribbonILoadBalancer!");
-//		return new PuppetZoneAwareLoadBalancer();
+//		return new PuppetZoneAwareLoadBalancer(config);
 //	}
-//
-//	@Bean
-//	public ILoadBalancer ribbonILoadBalancer(){
-//		logger.info("create ribbon ribbonILoadBalancer!");
-//		return new PuppetZoneAwareLoadBalancer();
-//	}
-//	
 //	@Bean
 //	public IClientConfig ribbonClientConfig() {
 //		DefaultClientConfigImpl config = new DefaultClientConfigImpl();
-//		config.loadProperties("say-hello");
+//		config.loadProperties("default");
 //		return config;
+//	}
+//	@Bean
+//	public ServerListFilter<Server> ribbonServerListFilter(IClientConfig config) {
+//		PuppetServerListFilter filter = new PuppetServerListFilter(redisTemplate);
+//		filter.initWithNiwsConfig(config);
+//		return filter;
 //	}
 	@Bean
 	public ServerListFilter<Server> ribbonServerListFilter() {
+		logger.debug("create PuppetServerListFilter isntance!");
 		PuppetServerListFilter filter = new PuppetServerListFilter();
-//		filter.initWithNiwsConfig(config);
 		return filter;
 	}
 }
