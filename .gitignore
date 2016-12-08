@@ -1,4 +1,5 @@
 .*
+!.gitignore
 
 # Package Files #
 *.jar
@@ -7,3 +8,7 @@
 
 build/
 target/
+bin/
+
+logs/
+*.log
