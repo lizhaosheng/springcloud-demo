@@ -46,13 +46,6 @@
 			<version>1.1.1</version>
 		</dependency>
 
-		<!-- demo -->
-		<dependency>
-			<groupId>com.lzs.puppet</groupId>
-			<artifactId>demo-common</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		
 		<!-- puppet -->
 		<dependency>
 			<groupId>com.lzs.puppet</groupId>

@@ -11,9 +11,12 @@
 package com.lzs.puppet.base.route;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * ClassName: Route <br/>
@@ -32,6 +35,10 @@ public class Route implements Serializable{
 	 */
 		
 	private static final long serialVersionUID = 1L;
+	/** */
+	private static final String sep_lisan = ",";
+	/** */
+	private static final String sep_lianxu = "-";
 	
 	private String uuid;
 	
@@ -46,7 +53,7 @@ public class Route implements Serializable{
 	/** 服务发起方端口号表达式，类似svn的版本表达式，多个版本使用逗号分隔，减号表示连续端口号*/
 	private String sourcePort;
 	/** 上面表达式的解析结果*/
-	private List<Integer> sourcePortList;
+	private List<int[]> sourcePortList;
 	/** 服务发起方服务名，正则表达式*/
 	private Map<String,String> sourceMetaData;
 	
@@ -59,11 +66,159 @@ public class Route implements Serializable{
 	/** 目标服务服务名表达式，类似svn的版本表达式，多个版本使用逗号分隔，减号表示连续端口号*/
 	private String targetPort;
 	/** 上面表达式的解析结果*/
-	private List<Integer> targetPortList;
+	private List<int[]> targetPortList;
 	/** 目标服务服务名，正则表达式*/
 	private Map<String,String> targetMetaData;
 	
+	/**
+	 * 
+	 * 判断路由配置是否是无效的空配置 
+	 *
+	 * @author hzlizhaosheng
+	 * @return
+	 */
+	public boolean isEmpty() {
+		if(sourceServiceName != null && !"".equals(sourceServiceName)){
+			return false;
+		}
+		if(sourceHost != null && !"".equals(sourceHost)){
+			return false;
+		}
+		if(sourceIp != null && !"".equals(sourceIp)){
+			return false;
+		}
+		if(sourcePort != null && !"".equals(sourcePort)){
+			return false;
+		}
+		if(sourceMetaData != null && !sourceMetaData.isEmpty()){
+			return false;
+		}
+		
+		if(targetServiceName != null && !"".equals(targetServiceName)){
+			return false;
+		}
+		if(targetHost != null && !"".equals(targetHost)){
+			return false;
+		}
+		if(targetIp != null && !"".equals(targetIp)){
+			return false;
+		}
+		if(targetPort != null && !"".equals(targetPort)){
+			return false;
+		}
+		if(targetMetaData != null && !targetMetaData.isEmpty()){
+			return false;
+		}
+		return true;
+	}
 
+	/**
+	 * 
+	 * 检查给定的端口号是否在已有的端口号集合中
+	 *
+	 * @author hzlizhaosheng
+	 * @param port - 给定端口号
+	 * @param portList - 端口集合，每一项是一个端口号或者一个端口号端的起止值，比如int[0]=1,int[1]=10 表示从1到10连续的端口号，int[0]=4,int[1]=-1 表示只有4端口号
+	 * @return
+	 */
+	private boolean isMatchPort(int port, List<int[]> portList){
+		if(port == 0){
+			return false;
+		}
+		if(portList == null || portList.isEmpty()){
+			return true;
+		}
+		for(int[] item:portList){
+			if(item == null || item.length == 0){
+				continue;
+			}
+			int start = item[0];
+			int end = item.length>1?item[item.length-1]:-1;
+			if(end == -1){
+				if(start == port){
+					return true;
+				}
+			}
+			else if(start <= port &&
+					end >= port){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * 
+	 * 将字符串表示的端口号表达式处理为 List<int[]>数据格式，字符串表达式和svn的版本号类似，比如：1,4,6-12,20,30-60  处理后将变成数组
+	 * [
+	 * {1,-1},
+	 * {4,-1},
+	 * {6,12},
+	 * {20,-1},
+	 * {30,60}
+	 * ]
+	 *
+	 * @author hzlizhaosheng
+	 * @param portstr
+	 * @return
+	 */
+	public List<int[]> dealPortList(String portstr) {
+		if(StringUtils.isNotBlank(portstr)){
+			List<int[]> portList = new ArrayList<int[]>();
+			String[] array1 = portstr.split(sep_lisan);
+			for(String s:array1){
+				String[] array2 = s.split(sep_lianxu);
+				int[] a = new int[2];
+				int start = Integer.parseInt(array2[0]);
+				a[0] = start;
+				if(array2.length > 1){
+					int end = Integer.parseInt(array2[array2.length-1]);
+					a[1] = end;
+				}
+				else{
+					a[1] = -1;
+				}
+				portList.add(a);
+			}
+			return portList;
+		}
+		return null;
+	}
+	
+	/**
+	 * 
+	 * 判断map的key-value是否满足regexMap中所有key对应的正则表达式，也就是说regexMap的所有key都存在map中，并且这些key在map中的value必须符合regexMap中对应key的value代表的正则表达式
+	 *
+	 * @author hzlizhaosheng
+	 * @param map
+	 * @param regexMap
+	 * @return
+	 */
+	public boolean regexContainMap(Map<String,String> map, Map<String,String> regexMap){//sourceMetaData
+		if(regexMap == null || regexMap.isEmpty()){
+			return true;
+		}
+		if(map == null || map.isEmpty()){
+			return false;
+		}
+		String key = null;
+		Iterator<String> it = regexMap.keySet().iterator();
+		while(it.hasNext()){
+			key = it.next();
+			String value = regexMap.get(key);
+			if(value == null){
+				continue;
+			}
+			if(!map.containsKey(key)){
+				return false;
+			}
+			if(!map.get(key).matches(value)){
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	public boolean isMatchSourceService(String serviceName){
 		if(serviceName == null){
 			return false;
@@ -125,73 +280,19 @@ public class Route implements Serializable{
 	}
 	
 	public boolean isMatchSourcePort(int port){
-		if(port == 0){
-			return false;
-		}
-		if(sourcePortList == null || sourcePortList.isEmpty()){
-			return true;
-		}
-		return sourcePortList.contains(port);
+		return isMatchPort(port,sourcePortList);
 	}
 	
 	public boolean isMatchTargetPort(int port){
-		if(port == 0){
-			return false;
-		}
-		if(targetPortList == null || targetPortList.isEmpty()){
-			return true;
-		}
-		return targetPortList.contains(port);
+		return isMatchPort(port,targetPortList);
 	}
 	
 	public boolean isMatchSourceMetaData(Map<String,String> map){//sourceMetaData
-		if(sourceMetaData == null || sourceMetaData.isEmpty()){
-			return true;
-		}
-		if(map == null || map.isEmpty()){
-			return false;
-		}
-		String key = null;
-		Iterator<String> it = sourceMetaData.keySet().iterator();
-		while(it.hasNext()){
-			key = it.next();
-			String value = sourceMetaData.get(key);
-			if(value == null){
-				continue;
-			}
-			if(!map.containsKey(key)){
-				return false;
-			}
-			if(!map.get(key).matches(value)){
-				return false;
-			}
-		}
-		return true;
+		return regexContainMap(map,sourceMetaData);
 	}
 	
 	public boolean isMatchTargetMetaData(Map<String,String> map){//sourceMetaData
-		if(targetMetaData == null || targetMetaData.isEmpty()){
-			return true;
-		}
-		if(map == null || map.isEmpty()){
-			return false;
-		}
-		String key = null;
-		Iterator<String> it = targetMetaData.keySet().iterator();
-		while(it.hasNext()){
-			key = it.next();
-			String value = targetMetaData.get(key);
-			if(value == null){
-				continue;
-			}
-			if(!map.containsKey(key)){
-				return false;
-			}
-			if(!map.get(key).matches(value)){
-				return false;
-			}
-		}
-		return true;
+		return regexContainMap(map,targetMetaData);
 	}
 	
 	public String getUuid() {
@@ -240,14 +341,7 @@ public class Route implements Serializable{
 
 	public void setSourcePort(String sourcePort) {
 		this.sourcePort = sourcePort;
-	}
-
-	public List<Integer> getSourcePortList() {
-		return sourcePortList;
-	}
-
-	public void setSourcePortList(List<Integer> sourcePortList) {
-		this.sourcePortList = sourcePortList;
+		this.sourcePortList = dealPortList(sourcePort);
 	}
 
 	public Map<String, String> getSourceMetaData() {
@@ -288,14 +382,7 @@ public class Route implements Serializable{
 
 	public void setTargetPort(String targetPort) {
 		this.targetPort = targetPort;
-	}
-
-	public List<Integer> getTargetPortList() {
-		return targetPortList;
-	}
-
-	public void setTargetPortList(List<Integer> targetPortList) {
-		this.targetPortList = targetPortList;
+		this.targetPortList = dealPortList(targetPort);
 	}
 
 	public Map<String, String> getTargetMetaData() {
@@ -304,6 +391,14 @@ public class Route implements Serializable{
 
 	public void setTargetMetaData(Map<String, String> targetMetaData) {
 		this.targetMetaData = targetMetaData;
+	}
+
+	public List<int[]> getSourcePortList() {
+		return sourcePortList;
+	}
+
+	public List<int[]> getTargetPortList() {
+		return targetPortList;
 	}
 }
 

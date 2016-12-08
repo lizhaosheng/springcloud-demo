@@ -38,6 +38,11 @@ public class PuppetRedisTemplate extends RedisTemplate<String, Object> {
 	private PuppetRedisProperties puppetRedisProperties;
 	
 	/**
+	 * list中设置为已删除特殊标记值
+	 */
+	private static final String LIST_ITEM_DELETED_FLAG = "<--__LIST_ITEM_DELETED_FLAG__-->";
+	
+	/**
 	 * 重命名key，放到事务中。
 	 * 注：所有要使用redis事务，请遵循类型的方式进行，不能直接使用multi
 	 * http://www.opensourcelab.cn/2014/09/23/spring-data-redis%E4%B8%AD%E7%9A%84%E5%9D%91%E5%92%8C%E8%AF%AF%E5%8C%BA/
@@ -162,6 +167,45 @@ public class PuppetRedisTemplate extends RedisTemplate<String, Object> {
 				do {
 					operations.multi();
 					operations.delete(key);
+					results = operations.exec();
+				} while (results == null);
+				return results;
+			}
+		});
+	}
+
+	/**
+	 * 
+	 * 删除从左边开始list的序号为index的元素，非事务（但最好写成事务）
+	 *
+	 * @author hzlizhaosheng
+	 * @param index
+	 */
+	public void leftDeleteAt(String key, int index) {
+		// 先设置为已删除
+		opsForList().set(key, index, LIST_ITEM_DELETED_FLAG);
+		// 再删除所有值为LIST_ITEM_DELETED_FLAG 的项，下面0为全部，若为负数则从队列尾部（右边）开始，若为正整数则删除从列头（左边）开始，删除n个
+		opsForList().remove(key, 0, LIST_ITEM_DELETED_FLAG);
+	}
+	
+	/**
+	 * 
+	 * 删除从左边开始list的序号为index的元素，事务
+	 *
+	 * @author hzlizhaosheng
+	 * @param index
+	 */
+	public void leftDeleteAtT(String key, int index) {
+		execute(new SessionCallback<List<Object>>() {
+			@SuppressWarnings({ "rawtypes", "unchecked" })
+			public List<Object> execute(RedisOperations operations) throws DataAccessException {
+				List<Object> results = null;
+				do {
+					operations.multi();
+					// 先设置为已删除
+					operations.opsForList().set(key, index, LIST_ITEM_DELETED_FLAG);
+					// 再删除所有值为LIST_ITEM_DELETED_FLAG 的项，下面0为全部，若为负数则从队列尾部（右边）开始，若为正整数则删除从列头（左边）开始，删除n个
+					operations.opsForList().remove(key, 0, LIST_ITEM_DELETED_FLAG);
 					results = operations.exec();
 				} while (results == null);
 				return results;

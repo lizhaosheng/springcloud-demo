@@ -3,8 +3,8 @@ server:
 
 eureka:
   instance:
-    hostname: demo-company
     instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${server.port}-${random.value}}
+    hostname: demo-company
     preferIpAddress: true # default false, but strong recommend to set true
   client:
     serviceUrl:
