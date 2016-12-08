@@ -9,4 +9,23 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://discovery:8761/eureka/ # ,http://discovery1:8761/eureka/,http://discovery2:8762/eureka/,http://discovery3:8763/eureka/
-     
+
+# 使用配置中心的数据库配置
+#spring: 
+#  datasource: 
+#    driverClassName: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3307/test
+#    username: elftest
+#    password: elftest 
+#    max-active:  8
+
+#jdbc: 
+#    driverClassName: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3307/test
+#    username: elftest
+#    password: elftest
+#    max-active:  10
+
+mybatis: 
+  mapper-locations:
+    - classpath:/com/lzs/puppet/demo/company/dao/*.xml

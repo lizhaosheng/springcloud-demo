@@ -12,6 +12,7 @@ package com.lzs.puppet.demo.company.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.lzs.puppet.demo.model.company.Staff;
@@ -26,6 +27,7 @@ import com.lzs.puppet.demo.model.company.Staff;
  * @since JDK 1.6
  * @see
  */
+@Mapper
 public interface StaffDao {
 
 	List<Staff> queryStaff(Staff staff);

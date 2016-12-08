@@ -8,11 +8,7 @@ jdbc:
     url: jdbc:mysql://127.0.0.1:3307/test
     username: elftest
     password: elftest
-  
-mybatis:
-  mapperScanPaths: 
-  mapperXmlPaths: 
-  
+
 redis:
   database: 0  # schema
   host: 127.0.0.1

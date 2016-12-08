@@ -23,8 +23,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @since JDK 1.6
  * @see
  */
-@ConfigurationProperties(prefix = "redis")
+@ConfigurationProperties(prefix = PuppetRedisProperties.PREFIX)
 public class PuppetRedisProperties extends RedisProperties{
+	public final static String PREFIX = "redis";
 	/** 是否支持事务，默认支持*/
 	private boolean transactionSupport = true;
 

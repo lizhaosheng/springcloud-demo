@@ -26,21 +26,25 @@ import org.springframework.transaction.annotation.TransactionManagementConfigure
 
 /**
  * ClassName: MybatisConfiguration <br/>
- * Function: TODO ADD FUNCTION. <br/>
- * Reason: TODO ADD REASON. <br/>
+ * Function: mybatis配置. <br/>
+ * Reason: 建议使用spring boot提供的集成方式，下面只是作为学习参考编写自定义mybatis配置. 
+ * 如果要使用，请将下面的注解@Configuration和@EnableTransactionManagement 打开<br/>
  * Date: 2016年12月6日 下午5:46:02 <br/>
  * @author: hzlizhaosheng
  * @version
  * @since JDK 1.6
  * @see
  */
-@Configuration
-@EnableTransactionManagement
+//@Configuration
+//@EnableTransactionManagement
 public class MybatisConfiguration implements TransactionManagementConfigurer {
 
     @Autowired
     DataSource dataSource;
     
+    /**
+     * 使用spring boot内置的MybatisProperties，当然也可以自己定义
+     */
     @Autowired
     MybatisProperties mybatisProperties;
     
@@ -49,6 +53,9 @@ public class MybatisConfiguration implements TransactionManagementConfigurer {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
 
+//      //添加插件
+//        bean.setPlugins(new Interceptor[]{pageHelper});
+        
         // XML文件中的model类的基包路径
         bean.setTypeAliasesPackage(mybatisProperties.getTypeAliasesPackage());
         //添加XML目录
