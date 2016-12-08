@@ -15,7 +15,7 @@
         <module>puppet-config</module>
         <module>puppet-gateway</module>
         <module>puppet-dashboard</module>
-        <module>puppet-route</module>
+        <module>puppet-routeweb</module>
         
         <module>ribbon-client</module>
         <module>ribbon-server</module>
