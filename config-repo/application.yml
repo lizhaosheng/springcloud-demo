@@ -3,12 +3,17 @@
 spring:
   profiles: test
   
-jdbc:
-  driverClassName: com.mysql.jdbc.Driver
-  url: jdbc:mysql://127.0.0.1:3307/test
-  username: elftest
-  password: elftest
-
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3307/test
+    username: elftest
+    password: elftest
+  
+mybatis:
+  mapperScanPaths: 
+  mapperXmlPaths: 
+  
 redis:
   database: 0  # schema
   host: 127.0.0.1
@@ -19,6 +24,7 @@ redis:
   pool.max-idle: 8
   pool.max-wait: 10
   pool.min-idle: 0
+  transactionSupport: false
 # sentinel.master:  # Name of Redis server.
 # sentinel.nodes:  # Comma-separated list of host:port pairs.  
 

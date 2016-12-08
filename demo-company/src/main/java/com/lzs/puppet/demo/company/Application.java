@@ -5,11 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
-import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
-
-import com.lzs.puppet.demo.base.ribbon.RibbonConfiguration;
 
 /**
  * SpringBoot默认会扫描启动类同包以及子包下的注解,可以通过
@@ -18,9 +15,9 @@ import com.lzs.puppet.demo.base.ribbon.RibbonConfiguration;
  * @author withf
  *
  */
-@SpringBootApplication(scanBasePackages={"com.lzs.puppet.demo.company","com.lzs.puppet.demo.base"})
+@SpringBootApplication(scanBasePackages={"com.lzs.puppet.demo.company","com.lzs.puppet.base"})
 @EnableDiscoveryClient
-@RibbonClient(name = "demo-company", configuration = RibbonConfiguration.class)
+//@RibbonClient(name = "demo-company", configuration = RibbonConfiguration.class)
 @EnableFeignClients
 public class Application {
 	@Bean

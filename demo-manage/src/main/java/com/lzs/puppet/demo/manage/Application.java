@@ -6,16 +6,14 @@ import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
-import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.web.client.RestTemplate;
 
-import com.lzs.puppet.demo.base.ribbon.RibbonConfiguration;
 
 @SpringBootApplication(scanBasePackages={"com.lzs.puppet.demo.manage","com.lzs.puppet.demo.base"})
 @EnableDiscoveryClient
-@RibbonClient(name = "demo", configuration = RibbonConfiguration.class)
+//@RibbonClient(name = "demo", configuration = RibbonConfiguration.class)
 @EnableFeignClients
 @EnableCircuitBreaker
 // 下面的注解会自动配置freemarker，导致自定义的spring.freemarker 相关配置不生效

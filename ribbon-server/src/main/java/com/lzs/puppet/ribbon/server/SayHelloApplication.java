@@ -21,7 +21,7 @@ public class SayHelloApplication {
   public String greet() {
     log.info("Access /greeting");
 
-    List<String> greetings = Arrays.asList("Hi there", "Greetings", "Salutations");
+    List<String> greetings = Arrays.asList("hi 12", "hello 34", "good bye 56");
     Random rand = new Random();
 
     int randomNum = rand.nextInt(greetings.size());

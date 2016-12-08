@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: puppet-routeweb
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        serviceId: config
+      profile: test
