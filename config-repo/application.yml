@@ -3,6 +3,12 @@
 spring:
   profiles: test
   
+# spring 自动配置  
+  freemarker:
+    template-loader-path:
+      - /WEB-INF/view/
+    suffix: .ftl
+    
   redis:
     database: 0  # schema
     host: 127.0.0.1
@@ -20,33 +26,31 @@ spring:
     url: jdbc:mysql://127.0.0.1:3307/test
     username: elftest
     password: elftest
-    
-#jdbc: 
-#    driverClassName: com.mysql.jdbc.Driver
-#    url: jdbc:mysql://127.0.0.1:3307/test
-#    username: elftest
-#    password: elftest
-#
-#redis:
-#  database: 0  # schema
-#  host: 127.0.0.1
-#  port: 6379
-#  password: ZZdfawt4e  # Login password of the redis server.
-#  timeout: 200  
-#  pool.max-active: 100
-#  pool.max-idle: 20
-#  pool.max-wait: 50
-#  pool.min-idle: 1
-#  transactionSupport: false
-  
-# sentinel.master:  # Name of Redis server.
-# sentinel.nodes:  # Comma-separated list of host:port pairs.  
-
-#freemarker:
-#  enabled: true
-#  template-loader-path: /WEB-INF/view  # also you can set like - classpath:/templates
-#  suffix: .ftl
 
 mybatis: 
   mapper-locations:
     - classpath:/com/lzs/puppet/demo/**/dao/*.xml
+    
+# 自定义的配置    
+jdbc: 
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3307/test
+    username: elftest
+    password: elftest
+
+redis:
+  database: 0  # schema
+  host: 127.0.0.1
+  port: 6379
+  password: ZZdfawt4e  # Login password of the redis server.
+  timeout: 200  
+  pool.max-active: 100
+  pool.max-idle: 20
+  pool.max-wait: 50
+  pool.min-idle: 1
+  transactionSupport: false
+
+freemarker:
+  enabled: true
+  template-loader-path: /WEB-INF/view  # also you can set like - classpath:/templates
+  suffix: .ftl
