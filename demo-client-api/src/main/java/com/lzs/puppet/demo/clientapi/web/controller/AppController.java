@@ -44,9 +44,9 @@ public class AppController {
 	@ResponseBody
 	@RequestMapping(value = "/queryApp")
 	public CommonResponse<List<App>> queryApp(App app) {
-		Map<String,App> map = new HashMap<String,App>();
-		map.put("app", app);
-		return restTemplate.getForObject("http://" + Constant.SERVICE.DEMO_APP +"/queryApp", CommonResponse.class,map);
+//		Map<String,App> map = new HashMap<String,App>();
+//		map.put("app", app);
+		return restTemplate.postForObject("http://" + Constant.SERVICE.DEMO_APP +"/queryApp", app,CommonResponse.class);
 	}
 
 	/**

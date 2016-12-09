@@ -11,7 +11,7 @@ import org.springframework.cloud.netflix.sidecar.EnableSidecar;
  * Reason: TODO ADD REASON(optional). <br/>
  * date: 2016年8月20日 下午2:47:49 <br/>
  *
- * @author lizhaosheng-黎昭声
+ * @author lizhaosheng
  * @version 
  * @since JDK 1.6
  */

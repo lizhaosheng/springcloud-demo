@@ -77,6 +77,7 @@ public class PuppetServerListFilter extends ZonePreferenceServerListFilter {
 	
 	@Override
 	public List<Server> getFilteredListOfServers(List<Server> servers) {
+		logger.info("进入路由信息同步方法");
 		if(!sync){// 没有其他线程在处理
 			sync = true;
 			try{

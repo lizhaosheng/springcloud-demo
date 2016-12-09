@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -42,7 +43,7 @@ public class AppController {
 	
 	@RequestMapping(value = "/queryApp")
 	@ResponseBody
-	public CommonResponse<List<App>> queryApp(App app) {
+	public CommonResponse<List<App>> queryApp(@RequestBody App app) {
 		CommonResponse<List<App>> resp = new CommonResponse<List<App>>();
 		try{
 			List<App> list = appService.queryApp(app);
@@ -76,7 +77,7 @@ public class AppController {
 	
 	@RequestMapping(value = "/addApp")
 	@ResponseBody
-	public CommonResponse<App> addApp(App app) {
+	public CommonResponse<App> addApp(@RequestBody App app) {
 		CommonResponse<App> resp = new CommonResponse<App>();
 		try{
 			int num = appService.addApp(app);

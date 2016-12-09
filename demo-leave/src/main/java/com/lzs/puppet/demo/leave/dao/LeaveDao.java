@@ -12,6 +12,7 @@ package com.lzs.puppet.demo.leave.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.lzs.puppet.demo.model.leave.Leave;
@@ -26,6 +27,7 @@ import com.lzs.puppet.demo.model.leave.Leave;
  * @since JDK 1.6
  * @see
  */
+@Mapper
 public interface LeaveDao {
 
 	List<Leave> queryLeave(Leave leave);

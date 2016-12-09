@@ -18,6 +18,8 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * ClassName: Route <br/>
  * Function: 路由配置项. 多个字段之间是且的关系，同一个字段多个值是或的关系<br/>
@@ -28,6 +30,7 @@ import org.apache.commons.lang3.StringUtils;
  * @since JDK 1.6
  * @see
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Route implements Serializable{
 
 	/**
@@ -77,7 +80,7 @@ public class Route implements Serializable{
 	 * @author hzlizhaosheng
 	 * @return
 	 */
-	public boolean isEmpty() {
+	public boolean empty() {
 		if(sourceServiceName != null && !"".equals(sourceServiceName)){
 			return false;
 		}
@@ -162,7 +165,7 @@ public class Route implements Serializable{
 	 * @param portstr
 	 * @return
 	 */
-	public List<int[]> dealPortList(String portstr) {
+	private List<int[]> dealPortList(String portstr) {
 		if(StringUtils.isNotBlank(portstr)){
 			List<int[]> portList = new ArrayList<int[]>();
 			String[] array1 = portstr.split(sep_lisan);
@@ -194,7 +197,7 @@ public class Route implements Serializable{
 	 * @param regexMap
 	 * @return
 	 */
-	public boolean regexContainMap(Map<String,String> map, Map<String,String> regexMap){//sourceMetaData
+	private boolean regexContainMap(Map<String,String> map, Map<String,String> regexMap){//sourceMetaData
 		if(regexMap == null || regexMap.isEmpty()){
 			return true;
 		}

@@ -8,8 +8,8 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
-@EnableConfigurationProperties(PuppetDataSourceProperties.class)
+//@Configuration
+//@EnableConfigurationProperties(PuppetDataSourceProperties.class)
 public class DataSourceConfiguration {
 	@Autowired
 	private PuppetDataSourceProperties properties;

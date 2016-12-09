@@ -12,6 +12,7 @@ package com.lzs.puppet.demo.app.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.lzs.puppet.demo.model.app.App;
@@ -26,6 +27,7 @@ import com.lzs.puppet.demo.model.app.App;
  * @since JDK 1.6
  * @see
  */
+@Mapper
 public interface AppDao {
 
 	List<App> queryApp(App app);

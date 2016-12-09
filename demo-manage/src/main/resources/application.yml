@@ -1,9 +1,10 @@
 server:
-  port: 8082
+  port: 0
 #${PORT:0}
 
 eureka:
   instance:
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${server.port}-${random.value}}
     hostname: demo-manage
     preferIpAddress: true # default false, but strong recommend to set true
     metadataMap:
@@ -17,3 +18,8 @@ eureka:
 #    template-loader-path:
 #      - /WEB-INF/view/
 #    suffix: .ftl
+
+mybatis: 
+  mapper-locations:
+    - classpath:/com/lzs/puppet/demo/manage/dao/*.xml
+    

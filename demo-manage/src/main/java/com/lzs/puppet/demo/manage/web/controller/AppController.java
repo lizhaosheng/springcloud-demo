@@ -1,10 +1,9 @@
 package com.lzs.puppet.demo.manage.web.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -44,9 +43,9 @@ public class AppController {
 	@ResponseBody
 	@RequestMapping(value = "/queryApp")
 	public CommonResponse<List<App>> queryApp(App app) {
-		Map<String,App> map = new HashMap<String,App>();
-		map.put("app", app);
-		return restTemplate.getForObject("http://" + Constant.SERVICE.DEMO_APP +"/queryApp", CommonResponse.class,map);
+//		Map<String,App> map = new HashMap<String,App>();
+//		map.put("app", app);
+		return restTemplate.postForObject("http://" + Constant.SERVICE.DEMO_APP +"/queryApp", app,CommonResponse.class);
 	}
 
 	/**
@@ -59,5 +58,20 @@ public class AppController {
 	@RequestMapping(value = "/getAppById")
 	public CommonResponse<App> getAppById(@RequestParam("id")long id) {
 		return restTemplate.getForObject("http://" + Constant.SERVICE.DEMO_APP +"/getAppById/" + id, CommonResponse.class);
+	}
+	
+	/**
+	 * 远程调用内部模块
+	 * 
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	@ResponseBody
+	@RequestMapping(value = "/addApp")
+	public CommonResponse<App> addApp(App app) {
+//		Map<String,App> map = new HashMap<String,App>();
+//		map.put("app", app);
+		List<HttpMessageConverter<?>> con = restTemplate.getMessageConverters();
+		return restTemplate.postForObject("http://" + Constant.SERVICE.DEMO_APP +"/addApp/", app,CommonResponse.class);
 	}
 }

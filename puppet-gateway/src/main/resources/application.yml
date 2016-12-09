@@ -38,3 +38,4 @@ zuul:
 #    remote-hello:
 #      path: /remote-hello/**
 #      url: http://localhost:9001 # url mode
+

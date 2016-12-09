@@ -32,9 +32,6 @@ import com.netflix.loadbalancer.ServerListFilter;
 @Configuration
 public class PuppetRibbonConfiguration {
 	private Logger logger = LoggerFactory.getLogger(PuppetRibbonConfiguration.class);
-//
-//	@Autowired
-//	private RedisTemplate redisTemplate;
 //	
 //	@Autowired
 //	IClientConfig ribbonClientConfig;

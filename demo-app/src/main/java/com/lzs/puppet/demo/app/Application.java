@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.web.client.RestTemplate;
 
-@SpringBootApplication(scanBasePackages={"com.lzs.puppet.demo.app","com.lzs.puppet.demo.base"})
+@SpringBootApplication(scanBasePackages={"com.lzs.puppet.demo.app","com.lzs.puppet.base"})
 @EnableDiscoveryClient
 //@RibbonClient(name = "demo-manage", configuration = DemoRibbonConfiguration.class)
 @EnableFeignClients

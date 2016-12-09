@@ -10,6 +10,8 @@
 
 package com.lzs.puppet.demo.manage.dao;
 
+import org.apache.ibatis.annotations.Mapper;
+
 import com.lzs.puppet.demo.model.manage.ManageUser;
 
 /**
@@ -22,6 +24,7 @@ import com.lzs.puppet.demo.model.manage.ManageUser;
  * @since JDK 1.6
  * @see
  */
+@Mapper
 public interface ManageUserDao {
 
 	ManageUser getManageUserByName(ManageUser user);

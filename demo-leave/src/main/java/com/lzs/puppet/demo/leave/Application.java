@@ -8,7 +8,7 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
-@SpringBootApplication(scanBasePackages={"com.lzs.puppet.demo.leave","com.lzs.puppet.demo.base"})
+@SpringBootApplication(scanBasePackages={"com.lzs.puppet.demo.leave","com.lzs.puppet.base"})
 @EnableDiscoveryClient
 //@RibbonClient(name = "demo-manage", configuration = DemoRibbonConfiguration.class)
 @EnableFeignClients
