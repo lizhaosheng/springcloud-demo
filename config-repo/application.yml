@@ -27,3 +27,7 @@ redis:
 #  enabled: true
 #  template-loader-path: /WEB-INF/view  # also you can set like - classpath:/templates
 #  suffix: .ftl
+
+mybatis: 
+  mapper-locations:
+    - classpath:/com/lzs/puppet/demo/**/dao/*.xml
