@@ -35,7 +35,20 @@ zuul:
       path: /client-api/**
       serviceId: demo-client-api
       # stripPrefix: false  # default true   /hello/login  ->  /login , if false /hello/login  ->  /hello/login
+    ribbon-client: 
+      path: /ribbon-client/**
+      serviceId: ribbon-client
+      # stripPrefix: false  # default true   /hello/login  ->  /login , if false /hello/login  ->  /hello/login
 #    remote-hello:
 #      path: /remote-hello/**
 #      url: http://localhost:9001 # url mode
+
+# 超时
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 15000
 
