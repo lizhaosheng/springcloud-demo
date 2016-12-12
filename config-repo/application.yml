@@ -4,10 +4,10 @@ spring:
   profiles: test
   
 # spring 自动配置  
-  freemarker:
-    template-loader-path:
-      - /WEB-INF/view/
-    suffix: .ftl
+#  freemarker:
+#    template-loader-path:
+#      - /WEB-INF/view/
+#    suffix: .ftl
     
 #  redis:
 #    database: 0  # schema
