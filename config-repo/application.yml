@@ -21,11 +21,11 @@ spring:
 #    pool.min-idle: 1
 #    transactionSupport: false
   
-  datasource: 
-    driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3307/test
-    username: elftest
-    password: elftest
+#  datasource: 
+#    driverClassName: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3307/test
+#    username: elftest
+#    password: elftest
 
 mybatis: 
   mapper-locations:
